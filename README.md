@@ -1,5 +1,5 @@
 <h1 align="center">
-  Todo App
+  CSV Plot
 </h1>
 
 ## 🚀 Quick start
