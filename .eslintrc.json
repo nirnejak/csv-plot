@@ -33,7 +33,6 @@
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
 
-    "sort-keys": "error",
     "import/order": [
       "error",
       {
