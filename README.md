@@ -5,12 +5,13 @@
 ### Technologies Used
 
 - React(TypeScript, Hooks, Context)
-- Vite
 - Radix UI
 - Radix Colors
+- Radix Icons
 - Stencil
 - Framer Motion
 - Plotly / D3 / Nivo
+- Vite
 
 ---
 
