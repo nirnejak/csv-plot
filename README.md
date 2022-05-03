@@ -4,28 +4,26 @@
 
 ### Technologies Used
 
-- React
-- TypeScript
+- React(TypeScript, Hooks, Context)
 - Vite
 - Radix UI
 - Radix Colors
 - Stencil
+- Framer Motion
 - Plotly / D3 / Nivo
 
-- Hooks + Context
-- React Query?
-- SWR?
+---
 
 ## 🚀 Quick start
 
 **Available Scripts**
 
 ```bash
-npm start
+npm install
 ```
 
 ```bash
-npm run build
+npm run prepare
 ```
 
 ```bash
@@ -37,5 +35,5 @@ npm run lint
 ```
 
 ```bash
-npm run lint-fix
+npm run build
 ```
