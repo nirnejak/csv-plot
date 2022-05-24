@@ -1,7 +1,8 @@
 import * as React from "react"
 
+import DragInput from "./components/atoms/DragInput"
 import Graph from "./components/atoms/Graph"
-import { defaultColors } from "./utils/graphConfig"
+import { defaultColors, GraphOptionsType } from "./utils/graphConfig"
 import styled from "./utils/stitches.config"
 
 const Container = styled("div", {
@@ -31,7 +32,7 @@ const App: React.FC = () => {
     ])
   }, [])
 
-  const options = {
+  const options: GraphOptionsType = {
     xAxis: "",
     yAxis: [{ field: "" }],
 
@@ -42,14 +43,17 @@ const App: React.FC = () => {
     orientation: "v",
     barmode: "group",
     showlegend: true,
-    showValuesOnTop: false,
-    formatAsDollars: false,
 
     colors: defaultColors,
   }
 
+  const handleFileDrop = (files: File[]) => {
+    console.log(files)
+  }
+
   return (
     <Container>
+      <DragInput title="Drop CSV files here" onChange={handleFileDrop} />
       <Graph type="bar" data={data} options={options} />
     </Container>
   )

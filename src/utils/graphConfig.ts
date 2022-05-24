@@ -8,7 +8,12 @@ export type SupportedGraphTypes =
   | "scatter"
   | "radar"
 
-export type GraphOptions = {
+type AxisType = { field: string }
+
+export type GraphOptionsType = {
+  xAxis?: string
+  yAxis?: AxisType[]
+
   title?: string
   titleX?: string
   titleY?: string

@@ -5,13 +5,13 @@ import {
   graphLayout,
   graphConfig,
   SupportedGraphTypes,
-  GraphOptions,
+  GraphOptionsType,
 } from "../../utils/graphConfig"
 
 type GraphProps = {
   type: SupportedGraphTypes
   data: any[]
-  options: GraphOptions
+  options: GraphOptionsType
 }
 
 const Graph: React.FC<GraphProps> = ({ type, data, options }) => {
