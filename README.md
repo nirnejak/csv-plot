@@ -8,9 +8,9 @@
 - Radix UI
 - Radix Colors
 - Radix Icons
-- Stencil
+- Stitches
 - Framer Motion
-- Plotly / D3 / Nivo
+- Plotly
 - Vite
 
 ---
