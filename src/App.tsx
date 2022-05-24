@@ -1,15 +1,22 @@
 import * as React from "react"
 
-import DragInput from "./components/atoms/DragInput"
 import Graph from "./components/atoms/Graph"
+import Sidebar from "./components/organisms/Sidebar"
 import { defaultColors, GraphOptionsType } from "./utils/graphConfig"
 import styled from "./utils/stitches.config"
 
-const Container = styled("div", {
+const Container = styled("main", {
   backgroundColor: "$slate12",
   minHeight: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "stretch",
+})
+
+const StyledGraphContainer = styled("section", {
+  flex: 2,
   display: "grid",
-  placeItems: "center",
+  placeContent: "center",
 })
 
 const App: React.FC = () => {
@@ -47,14 +54,12 @@ const App: React.FC = () => {
     colors: defaultColors,
   }
 
-  const handleFileDrop = (files: File[]) => {
-    console.log(files)
-  }
-
   return (
     <Container>
-      <DragInput title="Drop CSV files here" onChange={handleFileDrop} />
-      <Graph type="bar" data={data} options={options} />
+      <Sidebar />
+      <StyledGraphContainer>
+        <Graph type="bar" data={data} options={options} />
+      </StyledGraphContainer>
     </Container>
   )
 }
