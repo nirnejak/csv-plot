@@ -29,6 +29,9 @@ export const graphLayout = {
 
   paper_bgcolor: "transparent",
   plot_bgcolor: "transparent",
+  modebar: {
+    bgcolor: "transparent",
+  },
 }
 
 export const graphConfig = {
