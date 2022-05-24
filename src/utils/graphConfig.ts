@@ -23,8 +23,8 @@ export type GraphOptions = {
 
 export const graphLayout = {
   font: { family: "Colfax", color: "white" },
-  width: 320,
-  height: 240,
+  width: 700,
+  height: 500,
   legend: { orientation: "h" },
 
   paper_bgcolor: "transparent",
