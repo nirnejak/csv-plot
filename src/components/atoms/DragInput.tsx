@@ -1,13 +1,17 @@
 import * as React from "react"
 
+import { UploadIcon } from "@radix-ui/react-icons"
+
 import styled from "../../utils/stitches.config"
 
 const StyledFileInput = styled("div", {
-  display: "grid",
-  placeItems: "center",
+  display: "flex",
+  justifyContent: "center",
   padding: "20px 30px",
-  color: "$slate3",
   border: "1px dashed $slate3",
+
+  color: "$slate3",
+  lineHeight: 1,
 })
 
 type Props = {
@@ -39,7 +43,8 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
         }
       }}
     >
-      {title}
+      <UploadIcon style={{ marginRight: 10 }} />
+      <span>{title}</span>
     </StyledFileInput>
   )
 }
