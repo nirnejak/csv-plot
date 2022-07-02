@@ -1,13 +1,15 @@
 import * as React from "react"
 
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
+
 import styled from "../../utils/stitches.config"
-import Github from "../atoms/icons/Github"
+import Link from "../atoms/Link"
 
 const StyledNavbar = styled("nav", {
-  height: "60px",
+  height: "50px",
 
-  paddingLeft: 20,
-  paddingRight: 20,
+  paddingLeft: 15,
+  paddingRight: 15,
 
   display: "flex",
   justifyContent: "space-between",
@@ -21,9 +23,10 @@ const StyledNavbar = styled("nav", {
 const NavbarBrand = styled("h1", {
   backgroundColor: "$slate12",
 
-  fontSize: "1.4rem",
+  fontSize: "1rem",
   color: "white",
 })
+
 const NavbarLinks = styled("div", {
   color: "white",
   width: 25,
@@ -34,13 +37,9 @@ const Navbar: React.FC = () => {
     <StyledNavbar>
       <NavbarBrand>CSV Plot</NavbarBrand>
       <NavbarLinks>
-        <a
-          href="https://github.com/nirnejak/csv-plot"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Github />
-        </a>
+        <Link href="https://github.com/nirnejak/csv-plot" target="_blank">
+          <GitHubLogoIcon />
+        </Link>
       </NavbarLinks>
     </StyledNavbar>
   )
