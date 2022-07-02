@@ -8,7 +8,7 @@ const StyledSidebar = styled("aside", {
   display: "flex",
   flexDirection: "column",
   padding: 20,
-  borderRight: "1px solid $slate5",
+  borderRight: "0.5px solid $slate5",
 })
 
 const Sidebar: React.FC = () => {
