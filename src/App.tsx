@@ -1,13 +1,14 @@
 import * as React from "react"
 
 import Graph from "./components/atoms/Graph"
+import Navbar from "./components/organisms/Navbar"
 import Sidebar from "./components/organisms/Sidebar"
 import { defaultColors, GraphOptionsType } from "./utils/graphConfig"
 import styled from "./utils/stitches.config"
 
 const Container = styled("main", {
   backgroundColor: "$slate12",
-  minHeight: "100vh",
+  minHeight: "calc(100vh - 60px)",
   display: "flex",
   justifyContent: "center",
   alignItems: "stretch",
@@ -55,12 +56,15 @@ const App: React.FC = () => {
   }
 
   return (
-    <Container>
-      <Sidebar />
-      <StyledGraphContainer>
-        <Graph type="bar" data={data} options={options} />
-      </StyledGraphContainer>
-    </Container>
+    <>
+      <Navbar />
+      <Container>
+        <Sidebar />
+        <StyledGraphContainer>
+          <Graph type="bar" data={data} options={options} />
+        </StyledGraphContainer>
+      </Container>
+    </>
   )
 }
 
