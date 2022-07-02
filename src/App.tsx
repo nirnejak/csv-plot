@@ -3,7 +3,7 @@ import * as React from "react"
 import Graph from "./components/atoms/Graph"
 import Navbar from "./components/organisms/Navbar"
 import Sidebar from "./components/organisms/Sidebar"
-import { defaultColors, GraphOptionsType } from "./utils/graphConfig"
+import { defaultColors } from "./utils/graphConfig"
 import styled from "./utils/stitches.config"
 
 const AppContainer = styled("section", {
