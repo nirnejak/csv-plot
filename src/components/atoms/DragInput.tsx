@@ -22,30 +22,48 @@ type Props = {
 const FileInput: React.FC<Props> = ({ title, onChange }) => {
   const [isHighlighted, setIsHighlighted] = React.useState(false)
 
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target
+
+    if (files) {
+      onChange([...files])
+    }
+  }
+
   return (
-    <StyledFileInput
-      style={isHighlighted ? { borderColor: "#00bcd4" } : {}}
-      onDragLeave={() => setIsHighlighted(false)}
-      onDragOver={(e) => {
-        e.preventDefault()
-        setIsHighlighted(true)
-      }}
-      onDrop={(e) => {
-        e.preventDefault()
-        setIsHighlighted(false)
+    <>
+      <StyledFileInput
+        style={isHighlighted ? { borderColor: "#00bcd4" } : {}}
+        onDragLeave={() => setIsHighlighted(false)}
+        onDragOver={(e) => {
+          e.preventDefault()
+          setIsHighlighted(true)
+        }}
+        onDrop={(e) => {
+          e.preventDefault()
+          setIsHighlighted(false)
 
-        const files = Array.from(e.dataTransfer.files).filter(
-          (file) => file.type === "text/csv"
-        )
+          const files = Array.from(e.dataTransfer.files).filter(
+            (file) => file.type === "text/csv"
+          )
 
-        if (files.length > 0) {
-          onChange(files)
-        }
-      }}
-    >
-      <UploadIcon style={{ marginRight: 10 }} />
-      <span>{title}</span>
-    </StyledFileInput>
+          if (files.length > 0) {
+            onChange(files)
+          }
+        }}
+      >
+        <label htmlFor="file-input">
+          <UploadIcon style={{ marginRight: 10 }} />
+          <span>{title}</span>
+        </label>
+      </StyledFileInput>
+      <input
+        type="file"
+        id="file-input"
+        style={{ display: "none" }}
+        onChange={handleFileInput}
+      />
+    </>
   )
 }
 
