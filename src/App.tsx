@@ -6,15 +6,15 @@ import Sidebar from "./components/organisms/Sidebar"
 import { defaultColors, GraphOptionsType } from "./utils/graphConfig"
 import styled from "./utils/stitches.config"
 
-const Container = styled("main", {
+const AppContainer = styled("section", {
   backgroundColor: "$slate12",
-  minHeight: "calc(100vh - 60px)",
+  minHeight: "calc(100vh - 50px)",
   display: "flex",
   justifyContent: "center",
   alignItems: "stretch",
 })
 
-const StyledGraphContainer = styled("section", {
+const GraphContainer = styled("section", {
   flex: 2,
   display: "grid",
   placeContent: "center",
@@ -58,12 +58,12 @@ const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      <Container>
+      <AppContainer>
         <Sidebar />
-        <StyledGraphContainer>
+        <GraphContainer>
           <Graph type="bar" data={data} options={options} />
-        </StyledGraphContainer>
-      </Container>
+        </GraphContainer>
+      </AppContainer>
     </>
   )
 }
