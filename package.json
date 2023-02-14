@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src",
     "prepare": "husky install",
-    "format": "prettier --write src/**/*.{js,jsx}"
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md}\""
   },
   "dependencies": {
     "@radix-ui/colors": "^0.1.8",
