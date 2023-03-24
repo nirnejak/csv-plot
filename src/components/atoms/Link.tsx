@@ -1,18 +1,12 @@
 import * as React from "react"
 
-import styled from "../../utils/stitches.config"
-
-type Props = {
+interface Props {
   href?: string
   target?: string
   className?: string
   style?: React.CSSProperties
   children?: React.ReactNode
 }
-
-const StyledLink = styled("a", {
-  color: "white",
-})
 
 const Link: React.FC<Props> = ({
   href,
@@ -22,7 +16,7 @@ const Link: React.FC<Props> = ({
   children,
 }) => {
   return (
-    <StyledLink
+    <a
       href={href}
       target={target}
       className={className}
@@ -30,7 +24,7 @@ const Link: React.FC<Props> = ({
       rel="noreferrer"
     >
       {children}
-    </StyledLink>
+    </a>
   )
 }
 

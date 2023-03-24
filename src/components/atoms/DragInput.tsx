@@ -1,20 +1,6 @@
 import * as React from "react"
 
-import { UploadIcon } from "@radix-ui/react-icons"
-
-import styled from "../../utils/stitches.config"
-
-const StyledFileInput = styled("div", {
-  display: "flex",
-  justifyContent: "center",
-  padding: "20px 30px",
-  border: "1px dashed $slate3",
-
-  color: "$slate3",
-  lineHeight: 1,
-})
-
-type Props = {
+interface Props {
   title: string
   onChange: (files: File[]) => void
 }
@@ -22,7 +8,7 @@ type Props = {
 const FileInput: React.FC<Props> = ({ title, onChange }) => {
   const [isHighlighted, setIsHighlighted] = React.useState(false)
 
-  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { files } = e.target
 
     if (files) {
@@ -32,9 +18,12 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
 
   return (
     <>
-      <StyledFileInput
+      <div
+        className="flex items-center px-3 py-2"
         style={isHighlighted ? { borderColor: "#00bcd4" } : {}}
-        onDragLeave={() => setIsHighlighted(false)}
+        onDragLeave={() => {
+          setIsHighlighted(false)
+        }}
         onDragOver={(e) => {
           e.preventDefault()
           setIsHighlighted(true)
@@ -53,10 +42,10 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
         }}
       >
         <label htmlFor="file-input">
-          <UploadIcon style={{ marginRight: 10 }} />
+          Upload Icon
           <span>{title}</span>
         </label>
-      </StyledFileInput>
+      </div>
       <input
         type="file"
         id="file-input"

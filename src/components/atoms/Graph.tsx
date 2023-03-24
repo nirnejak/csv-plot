@@ -3,7 +3,7 @@ import Plot from "react-plotly.js"
 
 import { graphLayout, graphConfig } from "../../utils/graphConfig"
 
-type GraphProps = {
+interface GraphProps {
   type: SupportedGraphTypes
   data: any[]
   options: GraphOptionsType

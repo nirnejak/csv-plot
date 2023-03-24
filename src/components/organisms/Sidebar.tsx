@@ -1,27 +1,18 @@
 import * as React from "react"
 
-import styled from "../../utils/stitches.config"
 import DragInput from "../atoms/DragInput"
 
-const StyledSidebar = styled("aside", {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  padding: 20,
-  borderRight: "0.5px solid $slate5",
-})
-
 const Sidebar: React.FC = () => {
-  const handleFileDrop = (files: File[]) => {
+  const handleFileDrop = (files: File[]): void => {
     console.log(files)
   }
 
   return (
-    <StyledSidebar>
+    <aside className="flex-1 flex flex-col p-3 border-r-spacing-1">
       <div style={{ marginTop: "auto" }}>
         <DragInput title="Drop CSV files here" onChange={handleFileDrop} />
       </div>
-    </StyledSidebar>
+    </aside>
   )
 }
 

@@ -4,21 +4,6 @@ import Graph from "./components/atoms/Graph"
 import Navbar from "./components/organisms/Navbar"
 import Sidebar from "./components/organisms/Sidebar"
 import { defaultColors } from "./utils/graphConfig"
-import styled from "./utils/stitches.config"
-
-const AppContainer = styled("section", {
-  backgroundColor: "$slate12",
-  minHeight: "calc(100vh - 50px)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "stretch",
-})
-
-const GraphContainer = styled("section", {
-  flex: 2,
-  display: "grid",
-  placeContent: "center",
-})
 
 const App: React.FC = () => {
   const [data, setData] = React.useState<any[]>([])
@@ -58,12 +43,12 @@ const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      <AppContainer>
+      <section className="flex justify-center items-stretch">
         <Sidebar />
-        <GraphContainer>
+        <div className="flex-1 grid place-content-center">
           <Graph type="bar" data={data} options={options} />
-        </GraphContainer>
-      </AppContainer>
+        </div>
+      </section>
     </>
   )
 }
