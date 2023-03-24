@@ -4,7 +4,6 @@ interface Props {
   href?: string
   target?: string
   className?: string
-  style?: React.CSSProperties
   children?: React.ReactNode
 }
 
@@ -12,16 +11,16 @@ const Link: React.FC<Props> = ({
   href,
   target,
   className,
-  style,
   children,
+  ...restProps
 }) => {
   return (
     <a
       href={href}
       target={target}
       className={className}
-      style={style}
       rel="noreferrer"
+      {...restProps}
     >
       {children}
     </a>

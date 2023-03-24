@@ -1,11 +1,11 @@
 import * as React from "react"
 
-export type TraceType = {
+export interface TraceType {
   xAxis: number[]
   yAxis: number[]
 }
 
-export type TraceContextType = {
+export interface TraceContextType {
   traces: TraceType[]
   setValues: (values: TraceType[]) => void
 }
@@ -22,7 +22,7 @@ const TracesProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [traces, setTraces] = React.useState<TraceType[]>([])
 
-  const setValues = (values: TraceType[]) => {
+  const setValues = (values: TraceType[]): void => {
     setTraces(values)
   }
 
