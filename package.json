@@ -12,6 +12,7 @@
     "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md}\""
   },
   "dependencies": {
+    "akar-icons": "^1.9.25",
     "country-code-lookup": "^0.0.22",
     "currency-codes": "^2.1.0",
     "dotenv": "^16.0.3",

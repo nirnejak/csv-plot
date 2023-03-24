@@ -1,9 +1,23 @@
 import * as React from "react"
 
 import Graph from "./components/atoms/Graph"
-import Navbar from "./components/organisms/Navbar"
-import Sidebar from "./components/organisms/Sidebar"
+import DragInput from "./components/atoms/DragInput"
 import { defaultColors } from "./utils/graphConfig"
+
+const options: GraphOptionsType = {
+  xAxis: "",
+  yAxis: [{ field: "" }],
+
+  title: "Squares and Cubes",
+  titleX: "Numbers",
+  titleY: "Functions",
+
+  orientation: "v",
+  barmode: "group",
+  showlegend: true,
+
+  colors: defaultColors,
+}
 
 const App: React.FC = () => {
   const [data, setData] = React.useState<any[]>([])
@@ -25,31 +39,19 @@ const App: React.FC = () => {
     ])
   }, [])
 
-  const options: GraphOptionsType = {
-    xAxis: "",
-    yAxis: [{ field: "" }],
-
-    title: "Squares and Cubes",
-    titleX: "Numbers",
-    titleY: "Functions",
-
-    orientation: "v",
-    barmode: "group",
-    showlegend: true,
-
-    colors: defaultColors,
+  const handleFileDrop = (files: File[]): void => {
+    console.log(files)
   }
 
   return (
-    <>
-      <Navbar />
-      <section className="flex justify-center items-stretch">
-        <Sidebar />
-        <div className="flex-1 grid place-content-center">
-          <Graph type="bar" data={data} options={options} />
+    <section className="flex h-full w-full items-stretch justify-center bg-neutral-900">
+      <div className="grid h-screen flex-[2] place-content-center">
+        <Graph type="bar" data={data} options={options} />
+        <div className="flex justify-center py-2">
+          <DragInput title="Drop CSV files here" onChange={handleFileDrop} />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 

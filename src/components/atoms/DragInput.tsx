@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import { CloudUpload } from "akar-icons"
+
 interface Props {
   title: string
   onChange: (files: File[]) => void
@@ -41,8 +43,11 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
           }
         }}
       >
-        <label htmlFor="file-input">
-          Upload Icon
+        <label
+          htmlFor="file-input"
+          className="flex items-center gap-1 text-white"
+        >
+          <CloudUpload />
           <span>{title}</span>
         </label>
       </div>
