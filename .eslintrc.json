@@ -19,12 +19,19 @@
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:tailwindcss/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "tailwindcss"
+  ],
   "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
 
     "react/prop-types": "off",
@@ -33,37 +40,14 @@
     "react/no-multi-comp": "error",
     "react/sort-comp": "error",
 
-    "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
 
-    "import/order": [
+    "tailwindcss/no-custom-classname": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          ["parent", "internal", "sibling"],
-          "index",
-          "object"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "react*",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "redux*",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react*", "redux*"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        "cssFiles": ["./src/index.scss"],
+        "whitelist": []
       }
     ]
   },
@@ -75,5 +59,6 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": []
 }
