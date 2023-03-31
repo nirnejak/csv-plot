@@ -8,7 +8,7 @@
 - Radix UI
 - Radix Colors
 - Radix Icons
-- Stitches
+- TailwindCSS
 - Framer Motion
 - Plotly
 - Vite
