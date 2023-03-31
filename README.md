@@ -2,6 +2,8 @@
   CSV Plot
 </h1>
 
+Quickly upload and plot CSV data in a graph
+
 ### Technologies Used
 
 - React(TypeScript, Hooks, Context)
