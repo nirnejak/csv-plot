@@ -62,7 +62,7 @@
     "*.{js,jsx,ts,tsx}": "eslint"
   },
   "volta": {
-    "node": "18.12.1"
+    "node": "18.14.0"
   },
   "repository": {
     "type": "git",
