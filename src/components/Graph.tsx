@@ -1,7 +1,7 @@
 import * as React from "react"
 import Plot from "react-plotly.js"
 
-import { graphLayout, graphConfig } from "../../utils/graphConfig"
+import { graphLayout, graphConfig } from "../utils/graphConfig"
 
 interface GraphProps {
   type: SupportedGraphTypes

@@ -2,8 +2,8 @@ import * as React from "react"
 
 import Papa from "papaparse"
 
-import Graph from "./components/atoms/Graph"
-import DragInput from "./components/atoms/DragInput"
+import Graph from "./components/Graph"
+import DragInput from "./components/DragInput"
 import { defaultColors } from "./utils/graphConfig"
 import { arrayToKeyValuePairs } from "./utils/arrayToKeyValuePairs"
 
