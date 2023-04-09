@@ -28,6 +28,9 @@ const App: React.FC = () => {
   const [fields, setFields] = React.useState<string[]>([])
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
 
+  const [xAxis, setXAxis] = React.useState("")
+  const [yAxis, setYAxis] = React.useState("")
+
   React.useEffect(() => {
     setData([
       {
@@ -71,6 +74,10 @@ const App: React.FC = () => {
             <select
               id="xAxis"
               className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-100"
+              value={xAxis}
+              onChange={(e) => {
+                setXAxis(e.target.value)
+              }}
             >
               <option value="">Select Field</option>
               {fields.map((field, index) => (
@@ -87,6 +94,10 @@ const App: React.FC = () => {
             <select
               id="yAxis"
               className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-100"
+              value={yAxis}
+              onChange={(e) => {
+                setYAxis(e.target.value)
+              }}
             >
               <option value="">Select Field</option>
               {fields.map((field, index) => (
