@@ -61,38 +61,44 @@ const App: React.FC = () => {
 
   return (
     <section className="flex h-full w-full items-stretch justify-center bg-neutral-900">
-      <div className="flex flex-col justify-center gap-5 p-2">
-        <div>
-          <label htmlFor="xAxis" className="mb-1.5 block text-sm text-white">
-            X Axis
-          </label>
-          <select id="xAxis" className="rounded-md border-0 text-sm">
-            <option value="">Select Field</option>
-            {fields.map((field, index) => (
-              <option key={index} value={field}>
-                {field}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="yAxis" className="mb-1.5 block text-sm text-white">
-            Y Axis
-          </label>
-          <select id="yAxis" className="rounded-md border-0 text-sm">
-            <option value="">Select Field</option>
-            {fields.map((field, index) => (
-              <option key={index} value={field}>
-                {field}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
       <div className="grid h-screen flex-[2] place-content-center">
-        <Graph type="bar" data={data} options={options} />
         <div className="flex justify-center py-2">
           <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
+        </div>
+        <Graph type="bar" data={data} options={options} />
+        <div className="mt-5 flex justify-center gap-8">
+          <div>
+            <label htmlFor="xAxis" className="mb-1.5 block text-sm text-white">
+              X Axis
+            </label>
+            <select
+              id="xAxis"
+              className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-100"
+            >
+              <option value="">Select Field</option>
+              {fields.map((field, index) => (
+                <option key={index} value={field}>
+                  {field}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="yAxis" className="mb-1.5 block text-sm text-white">
+              Y Axis
+            </label>
+            <select
+              id="yAxis"
+              className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-100"
+            >
+              <option value="">Select Field</option>
+              {fields.map((field, index) => (
+                <option key={index} value={field}>
+                  {field}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
     </section>
