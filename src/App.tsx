@@ -117,9 +117,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="fixed right-5 top-5">
-        <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
-      </div>
+      <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
     </>
   )
 }

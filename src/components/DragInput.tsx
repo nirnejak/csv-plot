@@ -21,7 +21,6 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
   return (
     <>
       <div
-        className="flex items-center px-3 py-2"
         style={isHighlighted ? { borderColor: "#00bcd4" } : {}}
         onDragLeave={() => {
           setIsHighlighted(false)
@@ -45,7 +44,7 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
       >
         <label
           htmlFor="file-input"
-          className="flex cursor-pointer items-center gap-1 text-neutral-300"
+          className="fixed bottom-0 right-0 flex w-full cursor-pointer items-center justify-center gap-2 bg-neutral-800/40 p-4 text-center text-neutral-400 hover:bg-neutral-800/60"
         >
           <CloudUpload />
           <span>{title}</span>
