@@ -9,9 +9,11 @@ declare global {
     | "scatter"
     | "radar"
 
-  type AxisType = { field: string }
+  interface AxisType {
+    field: string
+  }
 
-  type GraphOptionsType = {
+  interface GraphOptionsType {
     xAxis?: string
     yAxis?: AxisType[]
 
