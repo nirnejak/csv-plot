@@ -45,7 +45,7 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
       >
         <label
           htmlFor="file-input"
-          className="flex items-center gap-1 text-white"
+          className="flex cursor-pointer items-center gap-1 text-white"
         >
           <CloudUpload />
           <span>{title}</span>
@@ -54,7 +54,7 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
       <input
         type="file"
         id="file-input"
-        style={{ display: "none" }}
+        className="hidden"
         onChange={handleFileInput}
       />
     </>

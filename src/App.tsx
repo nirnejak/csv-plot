@@ -60,11 +60,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <section className="flex h-full w-full items-stretch justify-center bg-neutral-900">
+    <>
       <div className="grid h-screen flex-[2] place-content-center">
-        <div className="flex justify-center py-2">
-          <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
-        </div>
         <Graph type="bar" data={data} options={options} />
         <div className="mt-5 flex justify-center gap-8">
           <div>
@@ -101,7 +98,10 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+      <div className="fixed right-5 top-5">
+        <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
+      </div>
+    </>
   )
 }
 
