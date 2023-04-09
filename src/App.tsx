@@ -64,58 +64,58 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className="grid h-screen flex-[2] place-content-center">
-        <Graph type="bar" data={data} options={options} />
-        <div className="mt-5 flex justify-center gap-8">
-          <div>
-            <label
-              htmlFor="xAxis"
-              className="mb-1.5 block text-sm text-neutral-200"
-            >
-              X Axis
-            </label>
-            <select
-              id="xAxis"
-              className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-100"
-              value={xAxis}
-              onChange={(e) => {
-                setXAxis(e.target.value)
-              }}
-              disabled={fields.length === 0}
-            >
-              <option value="">Select Field</option>
-              {fields.map((field, index) => (
-                <option key={index} value={field}>
-                  {field}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label
-              htmlFor="yAxis"
-              className="mb-1.5 block text-sm text-neutral-200"
-            >
-              Y Axis
-            </label>
-            <select
-              id="yAxis"
-              className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-200"
-              value={yAxis}
-              onChange={(e) => {
-                setYAxis(e.target.value)
-              }}
-              disabled={fields.length === 0}
-            >
-              <option value="">Select Field</option>
-              {fields.map((field, index) => (
-                <option key={index} value={field}>
-                  {field}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="fixed right-0 top-0 flex w-full justify-center gap-5 p-5">
+        <div className="w-64">
+          <label
+            htmlFor="xAxis"
+            className="mb-1.5 block text-sm text-neutral-200"
+          >
+            X Axis
+          </label>
+          <select
+            id="xAxis"
+            className="w-full rounded-md border-0 bg-neutral-800 text-sm text-neutral-200"
+            value={xAxis}
+            onChange={(e) => {
+              setXAxis(e.target.value)
+            }}
+            disabled={fields.length === 0}
+          >
+            <option value="">Select Field</option>
+            {fields.map((field, index) => (
+              <option key={index} value={field}>
+                {field}
+              </option>
+            ))}
+          </select>
         </div>
+        <div className="w-64">
+          <label
+            htmlFor="yAxis"
+            className="mb-1.5 block text-sm text-neutral-200"
+          >
+            Y Axis
+          </label>
+          <select
+            id="yAxis"
+            className="w-full rounded-md border-0 bg-neutral-800 text-sm text-neutral-200"
+            value={yAxis}
+            onChange={(e) => {
+              setYAxis(e.target.value)
+            }}
+            disabled={fields.length === 0}
+          >
+            <option value="">Select Field</option>
+            {fields.map((field, index) => (
+              <option key={index} value={field}>
+                {field}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="grid h-screen place-content-center">
+        <Graph type="bar" data={data} options={options} />
       </div>
       <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
     </>
