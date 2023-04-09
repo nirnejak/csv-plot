@@ -68,7 +68,10 @@ const App: React.FC = () => {
         <Graph type="bar" data={data} options={options} />
         <div className="mt-5 flex justify-center gap-8">
           <div>
-            <label htmlFor="xAxis" className="mb-1.5 block text-sm text-white">
+            <label
+              htmlFor="xAxis"
+              className="mb-1.5 block text-sm text-neutral-200"
+            >
               X Axis
             </label>
             <select
@@ -78,6 +81,7 @@ const App: React.FC = () => {
               onChange={(e) => {
                 setXAxis(e.target.value)
               }}
+              disabled={fields.length === 0}
             >
               <option value="">Select Field</option>
               {fields.map((field, index) => (
@@ -88,16 +92,20 @@ const App: React.FC = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="yAxis" className="mb-1.5 block text-sm text-white">
+            <label
+              htmlFor="yAxis"
+              className="mb-1.5 block text-sm text-neutral-200"
+            >
               Y Axis
             </label>
             <select
               id="yAxis"
-              className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-100"
+              className="rounded-md border-0 bg-neutral-800 text-sm text-neutral-200"
               value={yAxis}
               onChange={(e) => {
                 setYAxis(e.target.value)
               }}
+              disabled={fields.length === 0}
             >
               <option value="">Select Field</option>
               {fields.map((field, index) => (
