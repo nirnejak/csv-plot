@@ -36,7 +36,7 @@ const App: React.FC = () => {
       return [
         {
           type,
-          name: "Name",
+          name: "<trace-name>",
           x: unpack(fileData, xAxis),
           y: unpack(fileData, yAxis),
         },
