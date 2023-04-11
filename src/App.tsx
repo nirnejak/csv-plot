@@ -4,49 +4,18 @@ import Papa from "papaparse"
 
 import Graph from "./components/Graph"
 import DragInput from "./components/DragInput"
+import { unpack } from "./utils/unpack"
 import { defaultColors } from "./utils/graphConfig"
 import { arrayToKeyValuePairs } from "./utils/arrayToKeyValuePairs"
 
-const options: GraphOptionsType = {
-  xAxis: "",
-  yAxis: [{ field: "" }],
-
-  title: "Squares and Cubes",
-  titleX: "Numbers",
-  titleY: "Functions",
-
-  orientation: "v",
-  barmode: "group",
-  showlegend: true,
-
-  colors: defaultColors,
-}
-
 const App: React.FC = () => {
-  const [data, setData] = React.useState<any[]>([])
+  const [type, setType] = React.useState<"bar" | "pie" | "line">("bar")
 
   const [fields, setFields] = React.useState<string[]>([])
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
 
   const [xAxis, setXAxis] = React.useState("")
   const [yAxis, setYAxis] = React.useState("")
-
-  React.useEffect(() => {
-    setData([
-      {
-        type: "bar",
-        name: "Squares",
-        x: [1, 2, 3, 4, 5, 6, 7],
-        y: [1, 4, 9, 16, 25, 36, 49],
-      },
-      {
-        type: "bar",
-        name: "Cubes",
-        x: [1, 2, 3, 4, 5, 6, 7],
-        y: [1, 8, 27, 64, 125, 216, 343],
-      },
-    ])
-  }, [])
 
   const handleFileDrop = (files: File[]): void => {
     const reader = new FileReader()
@@ -61,6 +30,21 @@ const App: React.FC = () => {
     }
     reader.readAsText(files[0])
   }
+
+  const graphData = React.useMemo(() => {
+    if (fileData) {
+      return [
+        {
+          type,
+          name: "Name",
+          x: unpack(fileData, xAxis),
+          y: unpack(fileData, yAxis),
+        },
+      ]
+    } else {
+      return []
+    }
+  }, [type, fileData, xAxis, yAxis])
 
   return (
     <>
@@ -115,7 +99,24 @@ const App: React.FC = () => {
         </div>
       </div>
       <div className="grid h-screen place-content-center">
-        <Graph type="bar" data={data} options={options} />
+        <Graph
+          type="bar"
+          data={graphData}
+          options={{
+            xAxis: "",
+            yAxis: [{ field: "" }],
+
+            title: "",
+            titleX: xAxis,
+            titleY: yAxis,
+
+            orientation: "v",
+            barmode: "group",
+            showlegend: true,
+
+            colors: defaultColors,
+          }}
+        />
       </div>
       <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
     </>
