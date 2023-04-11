@@ -17,7 +17,7 @@
     "country-code-lookup": "^0.0.23",
     "currency-codes": "^2.1.0",
     "dotenv": "^16.0.3",
-    "framer-motion": "^10.11.4",
+    "framer-motion": "^10.11.5",
     "iso-3166-country-list": "^0.2.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
