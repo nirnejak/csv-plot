@@ -2,13 +2,13 @@ import * as React from "react"
 
 import Papa from "papaparse"
 
-import Graph from "./components/Graph"
-import DragInput from "./components/DragInput"
-import { unpack } from "./utils/unpack"
-import { defaultColors } from "./utils/graphConfig"
-import { arrayToKeyValuePairs } from "./utils/arrayToKeyValuePairs"
+import Graph from "../components/Graph"
+import DragInput from "../components/DragInput"
+import { unpack } from "../utils/unpack"
+import { defaultColors } from "../utils/graphConfig"
+import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
 
-const App: React.FC = () => {
+const HomePage: React.FC = () => {
   const [type, setType] = React.useState<"bar" | "pie" | "line">("bar")
 
   const [fields, setFields] = React.useState<string[]>([])
@@ -123,4 +123,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default HomePage

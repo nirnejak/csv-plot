@@ -18,12 +18,16 @@
     "dotenv": "^16.0.3",
     "framer-motion": "^10.11.4",
     "iso-3166-country-list": "^0.2.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "papaparse": "^5.4.1",
     "plotly.js": "^2.20.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-plotly.js": "^2.6.0"
+    "react-plotly.js": "^2.6.0",
+    "react-router-dom": "^6.10.0",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
