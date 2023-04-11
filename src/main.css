@@ -13,5 +13,5 @@
 
 html,
 body {
-  @apply bg-neutral-900;
+  @apply bg-neutral-900 text-neutral-200;
 }
