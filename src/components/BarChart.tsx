@@ -5,19 +5,25 @@ import * as React from "react"
 
 interface Props {
   data: any[]
+  keys: string[]
+  indexBy: string
+  fill?: any
   groupMode?: "grouped" | "stacked"
   layout?: "horizontal" | "vertical"
 }
 
 const BarChart: React.FC<Props> = ({
   data,
+  keys,
+  indexBy,
+  fill,
   groupMode = "stacked",
   layout = "vertical",
 }) => (
   <ResponsiveBar
     data={data}
-    keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-    indexBy="country"
+    keys={keys}
+    indexBy={indexBy}
     margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
     padding={0.3}
     groupMode={groupMode}
@@ -45,20 +51,7 @@ const BarChart: React.FC<Props> = ({
         spacing: 10,
       },
     ]}
-    fill={[
-      {
-        match: {
-          id: "fries",
-        },
-        id: "dots",
-      },
-      {
-        match: {
-          id: "sandwich",
-        },
-        id: "lines",
-      },
-    ]}
+    fill={fill}
     borderColor={{
       from: "color",
       modifiers: [["darker", 1.6]],

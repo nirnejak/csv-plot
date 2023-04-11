@@ -111,6 +111,25 @@ const nivoData = [
   },
 ]
 
+const keys = ["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]
+
+const indexBy = "country"
+
+const fill = [
+  {
+    match: {
+      id: "fries",
+    },
+    id: "dots",
+  },
+  {
+    match: {
+      id: "sandwich",
+    },
+    id: "lines",
+  },
+]
+
 const BarChartPage: React.FC = () => {
   const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
     "stacked"
@@ -122,7 +141,14 @@ const BarChartPage: React.FC = () => {
   return (
     <div className="grid h-screen place-content-center">
       <div className="h-[600px] w-[800px]">
-        <BarChart data={nivoData} groupMode={groupMode} layout={layout} />
+        <BarChart
+          data={nivoData}
+          keys={keys}
+          indexBy={indexBy}
+          fill={fill}
+          groupMode={groupMode}
+          layout={layout}
+        />
       </div>
 
       <div className="flex w-full justify-center gap-5 p-5 text-sm">
