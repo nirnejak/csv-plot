@@ -7,6 +7,7 @@ interface Props {
   data: any[]
   keys: string[]
   indexBy: string
+  defs?: any
   fill?: any
   groupMode?: "grouped" | "stacked"
   layout?: "horizontal" | "vertical"
@@ -16,6 +17,7 @@ const BarChart: React.FC<Props> = ({
   data,
   keys,
   indexBy,
+  defs,
   fill,
   groupMode = "stacked",
   layout = "vertical",
@@ -31,30 +33,11 @@ const BarChart: React.FC<Props> = ({
     valueScale={{ type: "linear" }}
     indexScale={{ type: "band", round: true }}
     colors={{ scheme: "nivo" }}
-    defs={[
-      {
-        id: "dots",
-        type: "patternDots",
-        background: "inherit",
-        color: "#38bcb2",
-        size: 4,
-        padding: 1,
-        stagger: true,
-      },
-      {
-        id: "lines",
-        type: "patternLines",
-        background: "inherit",
-        color: "#eed312",
-        rotation: -45,
-        lineWidth: 6,
-        spacing: 10,
-      },
-    ]}
+    defs={defs}
     fill={fill}
     borderColor={{
       from: "color",
-      modifiers: [["darker", 1.6]],
+      modifiers: [["brighter", 1.6]],
     }}
     axisTop={null}
     axisRight={null}
@@ -78,7 +61,7 @@ const BarChart: React.FC<Props> = ({
     labelSkipHeight={12}
     labelTextColor={{
       from: "color",
-      modifiers: [["darker", 1.6]],
+      modifiers: [["darker", 3]],
     }}
     legends={[
       {
