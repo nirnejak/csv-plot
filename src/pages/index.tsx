@@ -2,20 +2,26 @@ import * as React from "react"
 
 import Papa from "papaparse"
 
-import Graph from "../components/Graph"
+import BarChart from "../components/BarChart"
 import DragInput from "../components/DragInput"
-import { unpack } from "../utils/unpack"
-import { defaultColors } from "../utils/graphConfig"
+import classNames from "src/utils/classNames"
 import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
 
 const HomePage: React.FC = () => {
-  const [type, setType] = React.useState<"bar" | "pie" | "line">("bar")
-
   const [fields, setFields] = React.useState<string[]>([])
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
 
   const [xAxis, setXAxis] = React.useState("")
   const [yAxis, setYAxis] = React.useState("")
+
+  const [size, setSize] = React.useState(10)
+
+  const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
+    "stacked"
+  )
+  const [layout, setLayout] = React.useState<"horizontal" | "vertical">(
+    "vertical"
+  )
 
   const handleFileDrop = (files: File[]): void => {
     const reader = new FileReader()
@@ -25,26 +31,14 @@ const HomePage: React.FC = () => {
         console.log(parsedCsv.errors[0].message)
       } else {
         setFields(parsedCsv.data[0] as string[])
-        setFileData(arrayToKeyValuePairs(parsedCsv.data as any[][]))
+        const processedData = arrayToKeyValuePairs(
+          parsedCsv.data as any[][]
+        ).slice(0, size)
+        setFileData(processedData)
       }
     }
     reader.readAsText(files[0])
   }
-
-  const graphData = React.useMemo(() => {
-    if (fileData) {
-      return [
-        {
-          type,
-          name: "<trace-name>",
-          x: unpack(fileData, xAxis),
-          y: unpack(fileData, yAxis),
-        },
-      ]
-    } else {
-      return []
-    }
-  }, [type, fileData, xAxis, yAxis])
 
   return (
     <>
@@ -99,24 +93,67 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="grid h-screen place-content-center">
-        <Graph
-          type="bar"
-          data={graphData}
-          options={{
-            xAxis: "",
-            yAxis: [{ field: "" }],
-
-            title: "",
-            titleX: xAxis,
-            titleY: yAxis,
-
-            orientation: "v",
-            barmode: "group",
-            showlegend: true,
-
-            colors: defaultColors,
-          }}
-        />
+        <div className="h-[600px] w-[800px]">
+          <BarChart
+            data={fileData}
+            keys={[yAxis]}
+            indexBy={xAxis}
+            groupMode={groupMode}
+            layout={layout}
+          />
+        </div>
+        <div className="flex w-full justify-center gap-5 p-5 text-sm">
+          <div>
+            <p className="mb-2">Layout</p>
+            <button
+              className={classNames(
+                "rounded-l-md px-3 py-2",
+                layout === "vertical" ? "bg-neutral-800" : "bg-neutral-700"
+              )}
+              onClick={() => {
+                setLayout("vertical")
+              }}
+            >
+              Vertical
+            </button>
+            <button
+              className={classNames(
+                "rounded-r-md px-3 py-2",
+                layout === "horizontal" ? "bg-neutral-800" : "bg-neutral-700"
+              )}
+              onClick={() => {
+                setLayout("horizontal")
+              }}
+            >
+              Horizontal
+            </button>
+          </div>
+          <div>
+            <p className="mb-2">Group Mode</p>
+            <button
+              className={classNames(
+                "rounded-l-md px-3 py-2",
+                groupMode === "grouped" ? "bg-neutral-800" : "bg-neutral-700"
+              )}
+              onClick={() => {
+                setGroupMode("grouped")
+              }}
+            >
+              Grouped
+            </button>
+            <button
+              className={classNames(
+                "rounded-r-md px-3 py-2",
+                groupMode === "stacked" ? "bg-neutral-800" : "bg-neutral-700"
+              )}
+              onClick={() => {
+                setGroupMode("stacked")
+              }}
+            >
+              Stacked
+            </button>
+          </div>
+        </div>
       </div>
       <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
     </>
