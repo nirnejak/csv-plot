@@ -12,7 +12,7 @@ Quickly upload and plot CSV data in a graph
 - Radix Icons
 - TailwindCSS
 - Framer Motion
-- Plotly
+- Nivo
 - Vite
 
 ---
