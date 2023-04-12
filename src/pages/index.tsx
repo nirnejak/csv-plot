@@ -126,7 +126,7 @@ const HomePage: React.FC = () => {
           <div>
             <p className="mb-2">Group Mode</p>
             <ToggleGroup
-              value={layout}
+              value={groupMode}
               onValueChange={(value: string) => {
                 if (value) setGroupMode(value as "grouped" | "stacked")
               }}
