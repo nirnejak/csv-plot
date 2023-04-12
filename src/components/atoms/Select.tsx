@@ -1,11 +1,13 @@
 import * as React from "react"
+
+import { Label } from "@radix-ui/react-label"
 import {
   Root,
   Trigger,
   Portal,
   Content,
   Group,
-  Label,
+  Label as SelectLabel,
   ScrollUpButton,
   Icon,
   Value,
@@ -46,68 +48,71 @@ const Select: React.FC<Props> = ({
   options,
   isGrouped = false,
 }) => (
-  <Root value={value} onValueChange={onValueChange}>
-    <Trigger
-      className="inline-flex h-[35px] w-full items-center justify-between gap-2 rounded bg-neutral-800 px-4 text-sm leading-none text-neutral-300 outline-none hover:bg-neutral-700 data-[placeholder]:text-neutral-300"
-      aria-label={label}
-    >
-      <Value placeholder={placeholder} aria-label={value} />
-      <Icon className="text-neutral-600">
-        <ChevronDown size={12} />
-      </Icon>
-    </Trigger>
-    <Portal>
-      <Content className="overflow-hidden rounded bg-neutral-800">
-        <ScrollUpButton className="flex h-6 cursor-default items-center justify-center text-neutral-600">
-          <ChevronUp size={12} />
-        </ScrollUpButton>
-        <Viewport className="p-2">
-          {isGrouped
-            ? (options as GROUP_TYPE[]).map((group, i) => (
-                <>
-                  <Group>
-                    <Label className="px-3 text-xs leading-6 text-neutral-500">
-                      {group.name}
-                    </Label>
-                    {group.items.map((item, index) => (
-                      <Item
-                        key={index}
-                        className="relative flex h-[25px] select-none items-center rounded pl-6 pr-9 text-sm leading-none text-neutral-400 data-[disabled]:pointer-events-none data-[highlighted]:bg-neutral-700 data-[disabled]:text-neutral-600 data-[highlighted]:text-neutral-300 data-[highlighted]:outline-none"
-                        value={item.value}
-                        disabled={item.disabled}
-                      >
-                        <ItemText>{item.label}</ItemText>
-                        <ItemIndicator className="absolute left-0 inline-flex w-6 items-center justify-center">
-                          <Check size={12} />
-                        </ItemIndicator>
-                      </Item>
-                    ))}
-                  </Group>
-                  {i !== options.length - 1 && (
-                    <Separator className="mx-1 my-2 h-[1px] bg-neutral-600" />
-                  )}
-                </>
-              ))
-            : (options as ITEM_TYPE[]).map((item, index) => (
-                <Item
-                  key={index}
-                  className="relative flex h-[25px] select-none items-center rounded pl-6 pr-9 text-sm leading-none text-neutral-400 data-[disabled]:pointer-events-none data-[highlighted]:bg-neutral-700 data-[disabled]:text-neutral-600 data-[highlighted]:text-neutral-300 data-[highlighted]:outline-none"
-                  value={item.value}
-                  disabled={item.disabled}
-                >
-                  <ItemText>{item.label}</ItemText>
-                  <ItemIndicator className="absolute left-0 inline-flex w-6 items-center justify-center">
-                    <Check size={12} />
-                  </ItemIndicator>
-                </Item>
-              ))}
-        </Viewport>
-        <ScrollDownButton className="flex h-6 cursor-default items-center justify-center text-neutral-600">
+  <Label>
+    <span className="text-sm">{label}</span>
+    <Root value={value} onValueChange={onValueChange}>
+      <Trigger
+        className="inline-flex h-[35px] w-full items-center justify-between gap-2 rounded bg-neutral-800 px-4 text-sm leading-none text-neutral-300 outline-none hover:bg-neutral-700 data-[placeholder]:text-neutral-300"
+        aria-label={placeholder}
+      >
+        <Value placeholder={placeholder} aria-label={value} />
+        <Icon className="text-neutral-600">
           <ChevronDown size={12} />
-        </ScrollDownButton>
-      </Content>
-    </Portal>
-  </Root>
+        </Icon>
+      </Trigger>
+      <Portal>
+        <Content className="overflow-hidden rounded bg-neutral-800">
+          <ScrollUpButton className="flex h-6 cursor-default items-center justify-center text-neutral-600">
+            <ChevronUp size={12} />
+          </ScrollUpButton>
+          <Viewport className="p-2">
+            {isGrouped
+              ? (options as GROUP_TYPE[]).map((group, i) => (
+                  <>
+                    <Group>
+                      <SelectLabel className="px-3 text-xs leading-6 text-neutral-500">
+                        {group.name}
+                      </SelectLabel>
+                      {group.items.map((item, index) => (
+                        <Item
+                          key={index}
+                          className="relative flex h-[25px] select-none items-center rounded pl-6 pr-9 text-sm leading-none text-neutral-400 data-[disabled]:pointer-events-none data-[highlighted]:bg-neutral-700 data-[disabled]:text-neutral-600 data-[highlighted]:text-neutral-300 data-[highlighted]:outline-none"
+                          value={item.value}
+                          disabled={item.disabled}
+                        >
+                          <ItemText>{item.label}</ItemText>
+                          <ItemIndicator className="absolute left-0 inline-flex w-6 items-center justify-center">
+                            <Check size={12} />
+                          </ItemIndicator>
+                        </Item>
+                      ))}
+                    </Group>
+                    {i !== options.length - 1 && (
+                      <Separator className="mx-1 my-2 h-[1px] bg-neutral-600" />
+                    )}
+                  </>
+                ))
+              : (options as ITEM_TYPE[]).map((item, index) => (
+                  <Item
+                    key={index}
+                    className="relative flex h-[25px] select-none items-center rounded pl-6 pr-9 text-sm leading-none text-neutral-400 data-[disabled]:pointer-events-none data-[highlighted]:bg-neutral-700 data-[disabled]:text-neutral-600 data-[highlighted]:text-neutral-300 data-[highlighted]:outline-none"
+                    value={item.value}
+                    disabled={item.disabled}
+                  >
+                    <ItemText>{item.label}</ItemText>
+                    <ItemIndicator className="absolute left-0 inline-flex w-6 items-center justify-center">
+                      <Check size={12} />
+                    </ItemIndicator>
+                  </Item>
+                ))}
+          </Viewport>
+          <ScrollDownButton className="flex h-6 cursor-default items-center justify-center text-neutral-600">
+            <ChevronDown size={12} />
+          </ScrollDownButton>
+        </Content>
+      </Portal>
+    </Root>
+  </Label>
 )
 
 export default Select
