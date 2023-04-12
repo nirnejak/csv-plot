@@ -4,9 +4,9 @@ import Papa from "papaparse"
 
 import BarChart from "../components/BarChart"
 import DragInput from "../components/DragInput"
-import classNames from "src/utils/classNames"
 import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
 import ToggleGroup from "src/components/atoms/ToggleGroup"
+import Select from "src/components/atoms/Select"
 
 const HomePage: React.FC = () => {
   const [fields, setFields] = React.useState<string[]>([])
@@ -45,52 +45,26 @@ const HomePage: React.FC = () => {
     <>
       <div className="fixed right-0 top-0 flex w-full justify-center gap-5 p-5">
         <div className="w-64">
-          <label
-            htmlFor="xAxis"
-            className="mb-1.5 block text-sm text-neutral-200"
-          >
-            X Axis
-          </label>
-          <select
-            id="xAxis"
-            className="w-full rounded-md border-0 bg-neutral-800 text-sm text-neutral-200"
+          <Select
             value={xAxis}
-            onChange={(e) => {
-              setXAxis(e.target.value)
+            onValueChange={(value) => {
+              setXAxis(value)
             }}
-            disabled={fields.length === 0}
-          >
-            <option value="">Select Field</option>
-            {fields.map((field, index) => (
-              <option key={index} value={field}>
-                {field}
-              </option>
-            ))}
-          </select>
+            options={fields.map((field) => ({ label: field, value: field }))}
+            label="X Axis"
+            placeholder="Please select a x-axis..."
+          />
         </div>
         <div className="w-64">
-          <label
-            htmlFor="yAxis"
-            className="mb-1.5 block text-sm text-neutral-200"
-          >
-            Y Axis
-          </label>
-          <select
-            id="yAxis"
-            className="w-full rounded-md border-0 bg-neutral-800 text-sm text-neutral-200"
+          <Select
             value={yAxis}
-            onChange={(e) => {
-              setYAxis(e.target.value)
+            onValueChange={(value) => {
+              setYAxis(value)
             }}
-            disabled={fields.length === 0}
-          >
-            <option value="">Select Field</option>
-            {fields.map((field, index) => (
-              <option key={index} value={field}>
-                {field}
-              </option>
-            ))}
-          </select>
+            options={fields.map((field) => ({ label: field, value: field }))}
+            label="Y Axis"
+            placeholder="Please select a x-axis..."
+          />
         </div>
       </div>
       <div className="grid h-screen place-content-center">
