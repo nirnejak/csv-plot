@@ -7,6 +7,7 @@ import HomePage from "./pages"
 import BarChartPage from "./pages/bar"
 
 import "./main.css"
+import PieChartPage from "./pages/pie"
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/bar/",
     element: <BarChartPage />,
+  },
+  {
+    path: "/pie/",
+    element: <PieChartPage />,
   },
 ])
 
