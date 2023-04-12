@@ -6,6 +6,7 @@ import BarChart from "../components/BarChart"
 import DragInput from "../components/DragInput"
 import classNames from "src/utils/classNames"
 import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
+import ToggleGroup from "src/components/atoms/ToggleGroup"
 
 const HomePage: React.FC = () => {
   const [fields, setFields] = React.useState<string[]>([])
@@ -105,53 +106,41 @@ const HomePage: React.FC = () => {
         <div className="flex w-full justify-center gap-5 p-5 text-sm">
           <div>
             <p className="mb-2">Layout</p>
-            <button
-              className={classNames(
-                "rounded-l-md px-3 py-2",
-                layout === "vertical" ? "bg-neutral-800" : "bg-neutral-700"
-              )}
-              onClick={() => {
-                setLayout("vertical")
+            <ToggleGroup
+              value={layout}
+              onValueChange={(value: string) => {
+                if (value) setLayout(value as "horizontal" | "vertical")
               }}
-            >
-              Vertical
-            </button>
-            <button
-              className={classNames(
-                "rounded-r-md px-3 py-2",
-                layout === "horizontal" ? "bg-neutral-800" : "bg-neutral-700"
-              )}
-              onClick={() => {
-                setLayout("horizontal")
-              }}
-            >
-              Horizontal
-            </button>
+              items={[
+                {
+                  label: "Horizontal",
+                  value: "horizontal",
+                },
+                {
+                  label: "Vertical",
+                  value: "vertical",
+                },
+              ]}
+            />
           </div>
           <div>
             <p className="mb-2">Group Mode</p>
-            <button
-              className={classNames(
-                "rounded-l-md px-3 py-2",
-                groupMode === "grouped" ? "bg-neutral-800" : "bg-neutral-700"
-              )}
-              onClick={() => {
-                setGroupMode("grouped")
+            <ToggleGroup
+              value={layout}
+              onValueChange={(value: string) => {
+                if (value) setGroupMode(value as "grouped" | "stacked")
               }}
-            >
-              Grouped
-            </button>
-            <button
-              className={classNames(
-                "rounded-r-md px-3 py-2",
-                groupMode === "stacked" ? "bg-neutral-800" : "bg-neutral-700"
-              )}
-              onClick={() => {
-                setGroupMode("stacked")
-              }}
-            >
-              Stacked
-            </button>
+              items={[
+                {
+                  label: "Grouped",
+                  value: "grouped",
+                },
+                {
+                  label: "Stacked",
+                  value: "stacked",
+                },
+              ]}
+            />
           </div>
         </div>
       </div>
