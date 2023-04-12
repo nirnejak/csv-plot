@@ -1,6 +1,5 @@
 import React from "react"
 
-import BarChart from "../components/BarChart"
 import classNames from "src/utils/classNames"
 import PieChart from "src/components/PieChart"
 
