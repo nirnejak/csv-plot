@@ -151,6 +151,24 @@ const fill = [
   },
 ]
 
+const axisBottom = {
+  tickSize: 5,
+  tickPadding: 5,
+  tickRotation: 0,
+  legend: "country",
+  legendPosition: "middle",
+  legendOffset: 32,
+}
+
+const axisLeft = {
+  tickSize: 5,
+  tickPadding: 5,
+  tickRotation: 0,
+  legend: "food",
+  legendPosition: "middle",
+  legendOffset: -40,
+}
+
 const BarChartPage: React.FC = () => {
   const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
     "stacked"
@@ -170,6 +188,8 @@ const BarChartPage: React.FC = () => {
           fill={fill}
           groupMode={groupMode}
           layout={layout}
+          axisBottom={axisBottom}
+          axisLeft={axisLeft}
         />
       </div>
 

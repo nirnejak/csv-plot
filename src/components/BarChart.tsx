@@ -9,6 +9,8 @@ interface Props {
   indexBy: string
   defs?: any
   fill?: any
+  axisBottom?: any
+  axisLeft?: any
   groupMode?: "grouped" | "stacked"
   layout?: "horizontal" | "vertical"
 }
@@ -19,6 +21,8 @@ const BarChart: React.FC<Props> = ({
   indexBy,
   defs,
   fill,
+  axisBottom,
+  axisLeft,
   groupMode = "stacked",
   layout = "vertical",
 }) => (
@@ -41,22 +45,8 @@ const BarChart: React.FC<Props> = ({
     }}
     axisTop={null}
     axisRight={null}
-    axisBottom={{
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: "country",
-      legendPosition: "middle",
-      legendOffset: 32,
-    }}
-    axisLeft={{
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: "food",
-      legendPosition: "middle",
-      legendOffset: -40,
-    }}
+    axisBottom={axisBottom}
+    axisLeft={axisLeft}
     labelSkipWidth={12}
     labelSkipHeight={12}
     labelTextColor={{
