@@ -66,6 +66,9 @@ module.exports = {
         rise: "rise 150ms cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
+    fontFamily: {
+      sans: ["Graphik", "system-ui", "sans-serif"],
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 }
