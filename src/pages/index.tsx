@@ -1,12 +1,14 @@
 import * as React from "react"
 
 import Papa from "papaparse"
+import { SettingsHorizontal } from "akar-icons"
 
 import BarChart from "../components/BarChart"
 import DragInput from "../components/DragInput"
 import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
 import ToggleGroup from "src/components/atoms/ToggleGroup"
 import Select from "src/components/atoms/Select"
+import Popover from "src/components/atoms/Popover"
 
 const HomePage: React.FC = () => {
   const [fields, setFields] = React.useState<string[]>([])
@@ -65,6 +67,75 @@ const HomePage: React.FC = () => {
             label="Y Axis"
             placeholder="Please select a x-axis..."
           />
+        </div>
+        <div className="w-10 pt-6">
+          <Popover icon={<SettingsHorizontal size={14} />}>
+            <div className="flex flex-col gap-2.5">
+              <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
+                Margin
+              </p>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="top"
+                >
+                  Top
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="top"
+                  defaultValue="100%"
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="bottom"
+                >
+                  Bottom
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="bottom"
+                  defaultValue="100%"
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="left"
+                >
+                  Left
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="left"
+                  defaultValue="100%"
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="right"
+                >
+                  Right
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="right"
+                  defaultValue="100%"
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+            </div>
+          </Popover>
         </div>
       </div>
       <div className="grid h-screen place-content-center">
