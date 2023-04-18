@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
   const [xAxis, setXAxis] = React.useState("")
   const [yAxis, setYAxis] = React.useState("")
 
-  const [size, setSize] = React.useState(10)
+  const [size, setSize] = React.useState(15)
 
   const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
     "stacked"
