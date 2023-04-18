@@ -44,111 +44,33 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="fixed right-0 top-0 flex w-full justify-center gap-5 p-5">
-        <div className="w-64">
+    <div className="flex ">
+      <div className="relative h-screen bg-neutral-950">
+        <div className="flex w-full flex-col gap-5 p-5 text-sm">
           <Select
             value={xAxis}
             onValueChange={(value) => {
               setXAxis(value)
             }}
-            options={fields.map((field) => ({ label: field, value: field }))}
+            options={fields.map((field) => ({
+              label: field,
+              value: field,
+            }))}
             label="X Axis"
             placeholder="Please select a x-axis..."
           />
-        </div>
-        <div className="w-64">
           <Select
             value={yAxis}
             onValueChange={(value) => {
               setYAxis(value)
             }}
-            options={fields.map((field) => ({ label: field, value: field }))}
+            options={fields.map((field) => ({
+              label: field,
+              value: field,
+            }))}
             label="Y Axis"
             placeholder="Please select a x-axis..."
           />
-        </div>
-        <div className="w-10 pt-6">
-          <Popover icon={<SettingsHorizontal size={14} />}>
-            <div className="flex flex-col gap-2.5">
-              <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
-                Margin
-              </p>
-              <fieldset className="flex items-center gap-5">
-                <label
-                  className="w-[55px] text-xs text-neutral-300"
-                  htmlFor="top"
-                >
-                  Top
-                </label>
-                <input
-                  type="number"
-                  step={1}
-                  id="top"
-                  defaultValue="100%"
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                />
-              </fieldset>
-              <fieldset className="flex items-center gap-5">
-                <label
-                  className="w-[55px] text-xs text-neutral-300"
-                  htmlFor="bottom"
-                >
-                  Bottom
-                </label>
-                <input
-                  type="number"
-                  step={1}
-                  id="bottom"
-                  defaultValue="100%"
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                />
-              </fieldset>
-              <fieldset className="flex items-center gap-5">
-                <label
-                  className="w-[55px] text-xs text-neutral-300"
-                  htmlFor="left"
-                >
-                  Left
-                </label>
-                <input
-                  type="number"
-                  step={1}
-                  id="left"
-                  defaultValue="100%"
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                />
-              </fieldset>
-              <fieldset className="flex items-center gap-5">
-                <label
-                  className="w-[55px] text-xs text-neutral-300"
-                  htmlFor="right"
-                >
-                  Right
-                </label>
-                <input
-                  type="number"
-                  step={1}
-                  id="right"
-                  defaultValue="100%"
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                />
-              </fieldset>
-            </div>
-          </Popover>
-        </div>
-      </div>
-      <div className="grid h-screen place-content-center">
-        <div className="h-[600px] w-[800px]">
-          <BarChart
-            data={fileData}
-            keys={[yAxis]}
-            indexBy={xAxis}
-            groupMode={groupMode}
-            layout={layout}
-          />
-        </div>
-        <div className="flex w-full justify-center gap-5 p-5 text-sm">
           <div>
             <p className="mb-2">Layout</p>
             <ToggleGroup
@@ -187,10 +109,91 @@ const HomePage: React.FC = () => {
               ]}
             />
           </div>
+          <div className="flex items-center justify-between">
+            Margin
+            <Popover icon={<SettingsHorizontal size={14} />}>
+              <div className="flex flex-col gap-2.5">
+                <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
+                  Margin
+                </p>
+                <fieldset className="flex items-center gap-5">
+                  <label
+                    className="w-[55px] text-xs text-neutral-300"
+                    htmlFor="top"
+                  >
+                    Top
+                  </label>
+                  <input
+                    type="number"
+                    step={1}
+                    id="top"
+                    defaultValue="100%"
+                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  />
+                </fieldset>
+                <fieldset className="flex items-center gap-5">
+                  <label
+                    className="w-[55px] text-xs text-neutral-300"
+                    htmlFor="bottom"
+                  >
+                    Bottom
+                  </label>
+                  <input
+                    type="number"
+                    step={1}
+                    id="bottom"
+                    defaultValue="100%"
+                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  />
+                </fieldset>
+                <fieldset className="flex items-center gap-5">
+                  <label
+                    className="w-[55px] text-xs text-neutral-300"
+                    htmlFor="left"
+                  >
+                    Left
+                  </label>
+                  <input
+                    type="number"
+                    step={1}
+                    id="left"
+                    defaultValue="100%"
+                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  />
+                </fieldset>
+                <fieldset className="flex items-center gap-5">
+                  <label
+                    className="w-[55px] text-xs text-neutral-300"
+                    htmlFor="right"
+                  >
+                    Right
+                  </label>
+                  <input
+                    type="number"
+                    step={1}
+                    id="right"
+                    defaultValue="100%"
+                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  />
+                </fieldset>
+              </div>
+            </Popover>
+          </div>
+        </div>
+        <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
+      </div>
+      <div className="grid h-screen w-full place-content-center">
+        <div className="h-[600px] w-[800px]">
+          <BarChart
+            data={fileData}
+            keys={[yAxis]}
+            indexBy={xAxis}
+            groupMode={groupMode}
+            layout={layout}
+          />
         </div>
       </div>
-      <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
-    </>
+    </div>
   )
 }
 
