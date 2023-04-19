@@ -19,6 +19,12 @@ const HomePage: React.FC = () => {
 
   const [size, setSize] = React.useState(15)
 
+  const [margin, setMargin] = React.useState({
+    top: 50,
+    right: 130,
+    bottom: 50,
+    left: 60,
+  })
   const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
     "stacked"
   )
@@ -161,7 +167,10 @@ const HomePage: React.FC = () => {
                     type="number"
                     step={1}
                     id="top"
-                    defaultValue="100%"
+                    value={margin.top}
+                    onChange={(e) => {
+                      setMargin({ ...margin, top: parseFloat(e.target.value) })
+                    }}
                     className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
                   />
                 </fieldset>
@@ -176,7 +185,13 @@ const HomePage: React.FC = () => {
                     type="number"
                     step={1}
                     id="bottom"
-                    defaultValue="100%"
+                    value={margin.bottom}
+                    onChange={(e) => {
+                      setMargin({
+                        ...margin,
+                        bottom: parseFloat(e.target.value),
+                      })
+                    }}
                     className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
                   />
                 </fieldset>
@@ -191,7 +206,10 @@ const HomePage: React.FC = () => {
                     type="number"
                     step={1}
                     id="left"
-                    defaultValue="100%"
+                    value={margin.left}
+                    onChange={(e) => {
+                      setMargin({ ...margin, left: parseFloat(e.target.value) })
+                    }}
                     className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
                   />
                 </fieldset>
@@ -206,7 +224,13 @@ const HomePage: React.FC = () => {
                     type="number"
                     step={1}
                     id="right"
-                    defaultValue="100%"
+                    value={margin.right}
+                    onChange={(e) => {
+                      setMargin({
+                        ...margin,
+                        right: parseFloat(e.target.value),
+                      })
+                    }}
                     className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
                   />
                 </fieldset>
@@ -224,6 +248,7 @@ const HomePage: React.FC = () => {
             indexBy={xAxis}
             groupMode={groupMode}
             layout={layout}
+            margin={margin}
           />
         </div>
       </div>
