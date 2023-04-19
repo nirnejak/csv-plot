@@ -14,6 +14,7 @@ interface Props {
   groupMode?: "grouped" | "stacked"
   layout?: "horizontal" | "vertical"
   margin?: { top: number; bottom: number; left: number; right: number }
+  padding?: number
 }
 
 const BarChart: React.FC<Props> = ({
@@ -30,6 +31,7 @@ const BarChart: React.FC<Props> = ({
     bottom: 50,
     left: 60,
   },
+  padding = 0.3,
   groupMode = "stacked",
   layout = "vertical",
 }) => (
@@ -38,7 +40,7 @@ const BarChart: React.FC<Props> = ({
     keys={keys}
     indexBy={indexBy}
     margin={margin}
-    padding={0.3}
+    padding={padding}
     groupMode={groupMode}
     layout={layout}
     valueScale={{ type: "linear" }}
