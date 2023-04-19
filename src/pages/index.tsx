@@ -9,6 +9,7 @@ import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
 import ToggleGroup from "src/components/atoms/ToggleGroup"
 import Select from "src/components/atoms/Select"
 import Popover from "src/components/atoms/Popover"
+import GithubLink from "src/components/GithubLink"
 
 const HomePage: React.FC = () => {
   const [fields, setFields] = React.useState<string[]>([])
@@ -252,6 +253,7 @@ const HomePage: React.FC = () => {
           />
         </div>
       </div>
+      <GithubLink />
     </div>
   )
 }
