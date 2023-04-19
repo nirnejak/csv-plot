@@ -13,6 +13,8 @@ import GithubLink from "src/components/GithubLink"
 import Slider from "src/components/atoms/Slider"
 
 const HomePage: React.FC = () => {
+  const [type, setType] = React.useState<"bar" | "pie" | "line" | "area">("bar")
+
   const [fields, setFields] = React.useState<string[]>([])
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
 
@@ -113,44 +115,6 @@ const HomePage: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
-          <div>
-            <p className="mb-2">Layout</p>
-            <ToggleGroup
-              value={layout}
-              onValueChange={(value: string) => {
-                if (value) setLayout(value as "horizontal" | "vertical")
-              }}
-              items={[
-                {
-                  label: "Horizontal",
-                  value: "horizontal",
-                },
-                {
-                  label: "Vertical",
-                  value: "vertical",
-                },
-              ]}
-            />
-          </div>
-          <div>
-            <p className="mb-2">Group Mode</p>
-            <ToggleGroup
-              value={groupMode}
-              onValueChange={(value: string) => {
-                if (value) setGroupMode(value as "grouped" | "stacked")
-              }}
-              items={[
-                {
-                  label: "Grouped",
-                  value: "grouped",
-                },
-                {
-                  label: "Stacked",
-                  value: "stacked",
-                },
-              ]}
-            />
           </div>
           <div>
             <p className="mb-2 flex items-center justify-between">
@@ -255,6 +219,48 @@ const HomePage: React.FC = () => {
               </div>
             </Popover>
           </div>
+          {type === "bar" && (
+            <div>
+              <p className="mb-2">Layout</p>
+              <ToggleGroup
+                value={layout}
+                onValueChange={(value: string) => {
+                  if (value) setLayout(value as "horizontal" | "vertical")
+                }}
+                items={[
+                  {
+                    label: "Horizontal",
+                    value: "horizontal",
+                  },
+                  {
+                    label: "Vertical",
+                    value: "vertical",
+                  },
+                ]}
+              />
+            </div>
+          )}
+          {type === "bar" && yAxis.length > 1 && (
+            <div>
+              <p className="mb-2">Group Mode</p>
+              <ToggleGroup
+                value={groupMode}
+                onValueChange={(value: string) => {
+                  if (value) setGroupMode(value as "grouped" | "stacked")
+                }}
+                items={[
+                  {
+                    label: "Grouped",
+                    value: "grouped",
+                  },
+                  {
+                    label: "Stacked",
+                    value: "stacked",
+                  },
+                ]}
+              />
+            </div>
+          )}
         </div>
         <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
       </div>
