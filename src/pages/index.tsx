@@ -3,13 +3,14 @@ import * as React from "react"
 import Papa from "papaparse"
 import { Cross, Plus, SettingsHorizontal } from "akar-icons"
 
-import BarChart from "../components/BarChart"
-import DragInput from "../components/DragInput"
-import { arrayToKeyValuePairs } from "../utils/arrayToKeyValuePairs"
+import BarChart from "src/components/BarChart"
+import DragInput from "src/components/DragInput"
+import { arrayToKeyValuePairs } from "src/utils/arrayToKeyValuePairs"
 import ToggleGroup from "src/components/atoms/ToggleGroup"
 import Select from "src/components/atoms/Select"
 import Popover from "src/components/atoms/Popover"
 import GithubLink from "src/components/GithubLink"
+import Slider from "src/components/atoms/Slider"
 
 const HomePage: React.FC = () => {
   const [fields, setFields] = React.useState<string[]>([])
@@ -26,6 +27,7 @@ const HomePage: React.FC = () => {
     bottom: 50,
     left: 60,
   })
+  const [padding, setPadding] = React.useState(0.1)
   const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
     "stacked"
   )
@@ -238,6 +240,21 @@ const HomePage: React.FC = () => {
               </div>
             </Popover>
           </div>
+          <div>
+            <p className="mb-2 flex items-center justify-between">
+              <span>Padding</span>
+              <span>{padding}</span>
+            </p>
+            <Slider
+              label="Padding"
+              value={[padding]}
+              step={0.05}
+              max={0.9}
+              onValueChange={(val) => {
+                setPadding(val[0])
+              }}
+            />
+          </div>
         </div>
         <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
       </div>
@@ -250,6 +267,7 @@ const HomePage: React.FC = () => {
             groupMode={groupMode}
             layout={layout}
             margin={margin}
+            padding={padding}
           />
         </div>
       </div>
