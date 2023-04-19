@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import Papa from "papaparse"
-import { SettingsHorizontal } from "akar-icons"
+import { Cross, Plus, SettingsHorizontal } from "akar-icons"
 
 import BarChart from "../components/BarChart"
 import DragInput from "../components/DragInput"
@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
 
   const [xAxis, setXAxis] = React.useState("")
-  const [yAxis, setYAxis] = React.useState("")
+  const [yAxis, setYAxis] = React.useState([""])
 
   const [size, setSize] = React.useState(15)
 
@@ -59,18 +59,52 @@ const HomePage: React.FC = () => {
             label="X Axis"
             placeholder="Please select a x-axis..."
           />
-          <Select
-            value={yAxis}
-            onValueChange={(value) => {
-              setYAxis(value)
-            }}
-            options={fields.map((field) => ({
-              label: field,
-              value: field,
-            }))}
-            label="Y Axis"
-            placeholder="Please select a x-axis..."
-          />
+          <div>
+            <p className="mb-2">Y Axis</p>
+            <div className="flex flex-col gap-2">
+              {yAxis.map((field, index) => (
+                <div
+                  key={index}
+                  className="flex items-end justify-between gap-2"
+                >
+                  <Select
+                    value={field}
+                    onValueChange={(value) => {
+                      setYAxis((currentValue) =>
+                        currentValue.map((f, i) => (i === index ? value : f))
+                      )
+                    }}
+                    options={fields.map((field) => ({
+                      label: field,
+                      value: field,
+                    }))}
+                    placeholder="Please select a x-axis..."
+                  />
+                  {index === yAxis.length - 1 ? (
+                    <button
+                      className="rounded-full bg-neutral-800 p-2 text-neutral-300"
+                      onClick={() => {
+                        setYAxis((currentValue) => [...currentValue, ""])
+                      }}
+                    >
+                      <Plus size={17} />
+                    </button>
+                  ) : (
+                    <button
+                      className="rounded-full bg-neutral-800 p-2 text-neutral-300"
+                      onClick={() => {
+                        setYAxis((currentValue) =>
+                          currentValue.filter((f, i) => i !== index)
+                        )
+                      }}
+                    >
+                      <Cross size={17} />
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
           <div>
             <p className="mb-2">Layout</p>
             <ToggleGroup
@@ -186,7 +220,7 @@ const HomePage: React.FC = () => {
         <div className="h-[600px] w-[800px]">
           <BarChart
             data={fileData}
-            keys={[yAxis]}
+            keys={yAxis}
             indexBy={xAxis}
             groupMode={groupMode}
             layout={layout}
