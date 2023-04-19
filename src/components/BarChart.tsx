@@ -1,7 +1,6 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/bar
-import { ResponsiveBar } from "@nivo/bar"
 import * as React from "react"
+
+import { ResponsiveBar } from "@nivo/bar"
 
 interface Props {
   data: any[]
@@ -76,6 +75,7 @@ const BarChart: React.FC<Props> = ({
         itemDirection: "left-to-right",
         itemOpacity: 0.85,
         symbolSize: 20,
+        itemTextColor: "white",
         effects: [
           {
             on: "hover",
@@ -91,6 +91,7 @@ const BarChart: React.FC<Props> = ({
     barAriaLabel={(e) =>
       `${e.id}: ${e.formattedValue} in country: ${e.indexValue}`
     }
+    motionConfig="default" // default, gentle, wobbly, still, slow, molasses
   />
 )
 
