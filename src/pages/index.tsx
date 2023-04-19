@@ -152,6 +152,21 @@ const HomePage: React.FC = () => {
               ]}
             />
           </div>
+          <div>
+            <p className="mb-2 flex items-center justify-between">
+              <span>Padding</span>
+              <span>{padding}</span>
+            </p>
+            <Slider
+              label="Padding"
+              value={[padding]}
+              step={0.05}
+              max={0.9}
+              onValueChange={(val) => {
+                setPadding(val[0])
+              }}
+            />
+          </div>
           <div className="flex items-center justify-between">
             <p>Margin</p>
             <Popover icon={<SettingsHorizontal size={14} />}>
@@ -239,21 +254,6 @@ const HomePage: React.FC = () => {
                 </fieldset>
               </div>
             </Popover>
-          </div>
-          <div>
-            <p className="mb-2 flex items-center justify-between">
-              <span>Padding</span>
-              <span>{padding}</span>
-            </p>
-            <Slider
-              label="Padding"
-              value={[padding]}
-              step={0.05}
-              max={0.9}
-              onValueChange={(val) => {
-                setPadding(val[0])
-              }}
-            />
           </div>
         </div>
         <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
