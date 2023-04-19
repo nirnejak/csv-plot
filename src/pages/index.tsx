@@ -13,15 +13,13 @@ import GithubLink from "src/components/GithubLink"
 import Slider from "src/components/atoms/Slider"
 
 const HomePage: React.FC = () => {
-  const [type, setType] = React.useState<"bar" | "pie" | "line" | "area">("bar")
-
-  const [fields, setFields] = React.useState<string[]>([])
+  const [size, setSize] = React.useState(15)
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
+  const [fields, setFields] = React.useState<string[]>([])
 
+  const [type, setType] = React.useState<"bar" | "pie" | "line" | "area">("bar")
   const [xAxis, setXAxis] = React.useState("")
   const [yAxis, setYAxis] = React.useState([""])
-
-  const [size, setSize] = React.useState(15)
 
   const [margin, setMargin] = React.useState({
     top: 50,

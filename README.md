@@ -4,15 +4,14 @@
 
 Quickly upload and plot CSV data in a graph
 
-### Technologies Used
+### Tools and Technologies Used
 
-- React(TypeScript, Hooks, Context)
+- React
 - Radix UI
-- Radix Colors
-- Radix Icons
+- Akar Icons
 - TailwindCSS
 - Framer Motion
-- Nivo
+- Nivo Charts
 - Vite
 
 ---
