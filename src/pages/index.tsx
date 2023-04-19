@@ -58,18 +58,20 @@ const HomePage: React.FC = () => {
     <div className="flex ">
       <div className="relative h-screen bg-neutral-950">
         <div className="flex w-full flex-col gap-5 p-5 text-sm">
-          <Select
-            value={xAxis}
-            onValueChange={(value) => {
-              setXAxis(value)
-            }}
-            options={fields.map((field) => ({
-              label: field,
-              value: field,
-            }))}
-            label="X Axis"
-            placeholder="Please select a x-axis..."
-          />
+          <div>
+            <Select
+              value={xAxis}
+              onValueChange={(value) => {
+                setXAxis(value)
+              }}
+              options={fields.map((field) => ({
+                label: field,
+                value: field,
+              }))}
+              label="X Axis"
+              placeholder="Please select a x-axis..."
+            />
+          </div>
           <div>
             <p className="mb-2">Y Axis</p>
             <div className="flex flex-col gap-2">
@@ -116,6 +118,7 @@ const HomePage: React.FC = () => {
               ))}
             </div>
           </div>
+          <div className="my-1" />
           <div>
             <p className="mb-2 flex items-center justify-between">
               <span>Padding</span>
@@ -219,9 +222,10 @@ const HomePage: React.FC = () => {
               </div>
             </Popover>
           </div>
+          <div className="my-1" />
           {type === "bar" && (
             <div>
-              <p className="mb-2">Layout</p>
+              <p className="mb-2">Orientation</p>
               <ToggleGroup
                 value={layout}
                 onValueChange={(value: string) => {
