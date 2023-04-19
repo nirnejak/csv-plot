@@ -55,8 +55,8 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="flex ">
-      <div className="relative h-screen bg-neutral-950">
+    <div className="flex">
+      <div className="h-screen bg-neutral-950">
         <div className="flex w-full flex-col gap-5 p-5 text-sm">
           <div>
             <Select
@@ -266,9 +266,8 @@ const HomePage: React.FC = () => {
             </div>
           )}
         </div>
-        <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
       </div>
-      <div className="grid h-screen w-full place-content-center">
+      <div className="relative grid h-screen w-full place-content-center">
         <div className="h-[600px] w-[800px]">
           <BarChart
             data={fileData}
@@ -279,6 +278,7 @@ const HomePage: React.FC = () => {
             margin={margin}
             padding={padding}
           />
+          <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
         </div>
       </div>
       <GithubLink />
