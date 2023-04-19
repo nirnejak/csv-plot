@@ -35,8 +35,8 @@ interface Props {
   value: string
   onValueChange: (value: string) => void
   options: GROUP_TYPE[] | ITEM_TYPE[]
-  label: string
   placeholder: string
+  label?: string
   isGrouped?: boolean
 }
 
@@ -48,8 +48,8 @@ const Select: React.FC<Props> = ({
   options,
   isGrouped = false,
 }) => (
-  <Label>
-    <p className="mb-2 text-sm">{label}</p>
+  <Label className="w-full">
+    {label && <p className="mb-2 text-sm">{label}</p>}
     <Root value={value} onValueChange={onValueChange}>
       <Trigger
         className="inline-flex h-[35px] w-full items-center justify-between gap-2 rounded bg-neutral-800 px-4 text-sm leading-none text-neutral-300 outline-none hover:bg-neutral-700 data-[placeholder]:text-neutral-300"
