@@ -17,6 +17,7 @@
     "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-popover": "^1.0.5",
     "@radix-ui/react-select": "^1.2.1",
+    "@radix-ui/react-slider": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.0.3",
     "akar-icons": "^1.9.25",
     "country-code-lookup": "^0.0.23",
