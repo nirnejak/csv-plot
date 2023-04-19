@@ -144,11 +144,11 @@ const HomePage: React.FC = () => {
             />
           </div>
           <div className="flex items-center justify-between">
-            <p>Padding</p>
+            <p>Margin</p>
             <Popover icon={<SettingsHorizontal size={14} />}>
               <div className="flex flex-col gap-2.5">
                 <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
-                  Padding
+                  Margin
                 </p>
                 <fieldset className="flex items-center gap-5">
                   <label
