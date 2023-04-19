@@ -1,13 +1,13 @@
 import * as React from "react"
 
-import { Label } from "@radix-ui/react-label"
+import { Label as ReactLabel } from "@radix-ui/react-label"
 import {
   Root,
   Trigger,
   Portal,
   Content,
   Group,
-  Label as SelectLabel,
+  Label,
   ScrollUpButton,
   Icon,
   Value,
@@ -48,7 +48,7 @@ const Select: React.FC<Props> = ({
   options,
   isGrouped = false,
 }) => (
-  <Label className="w-full">
+  <ReactLabel className="w-full">
     {label && <p className="mb-2 text-sm">{label}</p>}
     <Root value={value} onValueChange={onValueChange}>
       <Trigger
@@ -70,9 +70,9 @@ const Select: React.FC<Props> = ({
               ? (options as GROUP_TYPE[]).map((group, i) => (
                   <>
                     <Group>
-                      <SelectLabel className="px-3 text-xs leading-6 text-neutral-500">
+                      <Label className="px-3 text-xs leading-6 text-neutral-500">
                         {group.name}
-                      </SelectLabel>
+                      </Label>
                       {group.items.map((item, index) => (
                         <Item
                           key={index}
@@ -112,7 +112,7 @@ const Select: React.FC<Props> = ({
         </Content>
       </Portal>
     </Root>
-  </Label>
+  </ReactLabel>
 )
 
 export default Select
