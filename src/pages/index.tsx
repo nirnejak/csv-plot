@@ -104,7 +104,7 @@ const HomePage: React.FC = () => {
                         )
                       }}
                     >
-                      <Cross size={17} />
+                      <Cross size={15} />
                     </button>
                   )}
                 </div>
