@@ -109,70 +109,10 @@ const defs = [
 ]
 
 const PieChartPage: React.FC = () => {
-  const [groupMode, setGroupMode] = React.useState<"grouped" | "stacked">(
-    "stacked"
-  )
-  const [layout, setLayout] = React.useState<"horizontal" | "vertical">(
-    "vertical"
-  )
-
   return (
     <div className="grid h-screen place-content-center">
       <div className="h-[600px] w-[800px]">
         <PieChart data={nivoData} fill={fill} defs={defs} />
-      </div>
-
-      <div className="flex w-full justify-center gap-5 p-5 text-sm">
-        <div>
-          <p className="mb-2">Layout</p>
-          <button
-            className={classNames(
-              "rounded-l-md px-3 py-2",
-              layout === "vertical" ? "bg-neutral-800" : "bg-neutral-700"
-            )}
-            onClick={() => {
-              setLayout("vertical")
-            }}
-          >
-            Vertical
-          </button>
-          <button
-            className={classNames(
-              "rounded-r-md px-3 py-2",
-              layout === "horizontal" ? "bg-neutral-800" : "bg-neutral-700"
-            )}
-            onClick={() => {
-              setLayout("horizontal")
-            }}
-          >
-            Horizontal
-          </button>
-        </div>
-        <div>
-          <p className="mb-2">Group Mode</p>
-          <button
-            className={classNames(
-              "rounded-l-md px-3 py-2",
-              groupMode === "grouped" ? "bg-neutral-800" : "bg-neutral-700"
-            )}
-            onClick={() => {
-              setGroupMode("grouped")
-            }}
-          >
-            Grouped
-          </button>
-          <button
-            className={classNames(
-              "rounded-r-md px-3 py-2",
-              groupMode === "stacked" ? "bg-neutral-800" : "bg-neutral-700"
-            )}
-            onClick={() => {
-              setGroupMode("stacked")
-            }}
-          >
-            Stacked
-          </button>
-        </div>
       </div>
     </div>
   )
