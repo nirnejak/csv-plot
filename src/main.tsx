@@ -8,6 +8,7 @@ import BarChartPage from "./pages/bar"
 
 import "./main.css"
 import PieChartPage from "./pages/pie"
+import LineChartPage from "./pages/line"
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/bar/",
     element: <BarChartPage />,
+  },
+  {
+    path: "/line/",
+    element: <LineChartPage />,
   },
   {
     path: "/pie/",
