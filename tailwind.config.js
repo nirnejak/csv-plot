@@ -67,7 +67,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ["Graphik", "system-ui", "sans-serif"],
+      sans: ["system-ui", "sans-serif"],
     },
   },
   plugins: [require("@tailwindcss/forms")],
