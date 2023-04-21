@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nivo/bar": "^0.80.0",
+    "@nivo/line": "^0.80.0",
     "@nivo/pie": "^0.80.0",
     "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-popover": "^1.0.5",
