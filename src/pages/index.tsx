@@ -13,11 +13,13 @@ import GithubLink from "src/components/GithubLink"
 import Slider from "src/components/atoms/Slider"
 
 const HomePage: React.FC = () => {
-  const [size, setSize] = React.useState(15)
+  const [size, setSize] = React.useState(10)
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
   const [fields, setFields] = React.useState<string[]>([])
 
-  const [type, setType] = React.useState<"bar" | "pie" | "line" | "area">("bar")
+  const [type, setType] = React.useState<
+    "bar" | "pie" | "line" | "area" | "map"
+  >("bar")
   const [xAxis, setXAxis] = React.useState("")
   const [yAxis, setYAxis] = React.useState([""])
 
@@ -52,221 +54,15 @@ const HomePage: React.FC = () => {
     reader.readAsText(files[0])
   }
 
-  return (
-    <div className="flex">
-      <div className="h-screen bg-neutral-950">
-        <div className="flex w-full flex-col gap-5 p-5 text-sm">
-          <div>
-            <Select
-              value={xAxis}
-              onValueChange={(value) => {
-                setXAxis(value)
-              }}
-              options={fields.map((field) => ({
-                label: field,
-                value: field,
-              }))}
-              label="X Axis"
-              placeholder="Please select a x-axis..."
-            />
-          </div>
-          <div>
-            <p className="mb-2">Y Axis</p>
-            <div className="flex flex-col gap-2">
-              {yAxis.map((field, index) => (
-                <div
-                  key={index}
-                  className="flex items-end justify-between gap-2"
-                >
-                  <Select
-                    value={field}
-                    onValueChange={(value) => {
-                      setYAxis((currentValue) =>
-                        currentValue.map((f, i) => (i === index ? value : f))
-                      )
-                    }}
-                    options={fields.map((field) => ({
-                      label: field,
-                      value: field,
-                    }))}
-                    placeholder="Please select a x-axis..."
-                  />
-                  {index === yAxis.length - 1 ? (
-                    <button
-                      className="rounded-full bg-neutral-800 p-2 text-neutral-300"
-                      onClick={() => {
-                        setYAxis((currentValue) => [...currentValue, ""])
-                      }}
-                    >
-                      <Plus size={17} />
-                    </button>
-                  ) : (
-                    <button
-                      className="rounded-full bg-neutral-800 p-2 text-neutral-300"
-                      onClick={() => {
-                        setYAxis((currentValue) =>
-                          currentValue.filter((f, i) => i !== index)
-                        )
-                      }}
-                    >
-                      <Cross size={15} />
-                    </button>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="my-1" />
-          <div>
-            <p className="mb-2 flex items-center justify-between">
-              <span>Padding</span>
-              <span>{padding}</span>
-            </p>
-            <Slider
-              label="Padding"
-              value={[padding]}
-              step={0.05}
-              max={0.9}
-              onValueChange={(val) => {
-                setPadding(val[0])
-              }}
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <p>Margin</p>
-            <Popover icon={<SettingsHorizontal size={14} />}>
-              <div className="flex flex-col gap-2.5">
-                <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
-                  Margin
-                </p>
-                <fieldset className="flex items-center gap-5">
-                  <label
-                    className="w-[55px] text-xs text-neutral-300"
-                    htmlFor="top"
-                  >
-                    Top
-                  </label>
-                  <input
-                    type="number"
-                    step={1}
-                    id="top"
-                    value={margin.top}
-                    onChange={(e) => {
-                      setMargin({ ...margin, top: parseFloat(e.target.value) })
-                    }}
-                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                  />
-                </fieldset>
-                <fieldset className="flex items-center gap-5">
-                  <label
-                    className="w-[55px] text-xs text-neutral-300"
-                    htmlFor="bottom"
-                  >
-                    Bottom
-                  </label>
-                  <input
-                    type="number"
-                    step={1}
-                    id="bottom"
-                    value={margin.bottom}
-                    onChange={(e) => {
-                      setMargin({
-                        ...margin,
-                        bottom: parseFloat(e.target.value),
-                      })
-                    }}
-                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                  />
-                </fieldset>
-                <fieldset className="flex items-center gap-5">
-                  <label
-                    className="w-[55px] text-xs text-neutral-300"
-                    htmlFor="left"
-                  >
-                    Left
-                  </label>
-                  <input
-                    type="number"
-                    step={1}
-                    id="left"
-                    value={margin.left}
-                    onChange={(e) => {
-                      setMargin({ ...margin, left: parseFloat(e.target.value) })
-                    }}
-                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                  />
-                </fieldset>
-                <fieldset className="flex items-center gap-5">
-                  <label
-                    className="w-[55px] text-xs text-neutral-300"
-                    htmlFor="right"
-                  >
-                    Right
-                  </label>
-                  <input
-                    type="number"
-                    step={1}
-                    id="right"
-                    value={margin.right}
-                    onChange={(e) => {
-                      setMargin({
-                        ...margin,
-                        right: parseFloat(e.target.value),
-                      })
-                    }}
-                    className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
-                  />
-                </fieldset>
-              </div>
-            </Popover>
-          </div>
-          <div className="my-1" />
-          {type === "bar" && (
-            <div>
-              <p className="mb-2">Orientation</p>
-              <ToggleGroup
-                value={layout}
-                onValueChange={(value: string) => {
-                  if (value) setLayout(value as "horizontal" | "vertical")
-                }}
-                items={[
-                  {
-                    label: "Horizontal",
-                    value: "horizontal",
-                  },
-                  {
-                    label: "Vertical",
-                    value: "vertical",
-                  },
-                ]}
-              />
-            </div>
-          )}
-          {type === "bar" && yAxis.length > 1 && (
-            <div>
-              <p className="mb-2">Group Mode</p>
-              <ToggleGroup
-                value={groupMode}
-                onValueChange={(value: string) => {
-                  if (value) setGroupMode(value as "grouped" | "stacked")
-                }}
-                items={[
-                  {
-                    label: "Grouped",
-                    value: "grouped",
-                  },
-                  {
-                    label: "Stacked",
-                    value: "stacked",
-                  },
-                ]}
-              />
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="relative grid h-screen w-full place-content-center">
-        <div className="h-[600px] w-[800px]">
+  const renderGraph = (): JSX.Element => {
+    switch (type) {
+      case "map":
+      case "area":
+      case "line":
+      case "pie":
+      case "bar":
+      default:
+        return (
           <BarChart
             data={fileData}
             keys={yAxis}
@@ -276,6 +72,252 @@ const HomePage: React.FC = () => {
             margin={margin}
             padding={padding}
           />
+        )
+    }
+  }
+
+  return (
+    <div className="flex">
+      <div className="flex h-screen min-w-[300px] flex-col gap-5 bg-neutral-950 p-5 text-sm">
+        <div>
+          <Select
+            value={xAxis}
+            onValueChange={(value) => {
+              setXAxis(value)
+            }}
+            options={fields.map((field) => ({
+              label: field,
+              value: field,
+            }))}
+            label="X Axis"
+            placeholder="Please select a x-axis..."
+          />
+        </div>
+        <div>
+          <p className="mb-2">Y Axis</p>
+          <div className="flex flex-col gap-2">
+            {yAxis.map((field, index) => (
+              <div key={index} className="flex items-end justify-between gap-2">
+                <Select
+                  value={field}
+                  onValueChange={(value) => {
+                    setYAxis((currentValue) =>
+                      currentValue.map((f, i) => (i === index ? value : f))
+                    )
+                  }}
+                  options={fields.map((field) => ({
+                    label: field,
+                    value: field,
+                  }))}
+                  placeholder="Please select a x-axis..."
+                />
+                {index === yAxis.length - 1 ? (
+                  <button
+                    className="rounded-full bg-neutral-800 p-2 text-neutral-300"
+                    onClick={() => {
+                      setYAxis((currentValue) => [...currentValue, ""])
+                    }}
+                  >
+                    <Plus size={17} />
+                  </button>
+                ) : (
+                  <button
+                    className="rounded-full bg-neutral-800 p-2 text-neutral-300"
+                    onClick={() => {
+                      setYAxis((currentValue) =>
+                        currentValue.filter((f, i) => i !== index)
+                      )
+                    }}
+                  >
+                    <Cross size={15} />
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="my-1" />
+        <div>
+          <p className="mb-2 flex items-center justify-between">
+            <span>Padding</span>
+            <span>{padding}</span>
+          </p>
+          <Slider
+            label="Padding"
+            value={[padding]}
+            step={0.05}
+            max={0.9}
+            onValueChange={(val) => {
+              setPadding(val[0])
+            }}
+          />
+        </div>
+        <div className="flex items-center justify-between">
+          <p>Margin</p>
+          <Popover icon={<SettingsHorizontal size={14} />}>
+            <div className="flex flex-col gap-2.5">
+              <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
+                Margin
+              </p>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="top"
+                >
+                  Top
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="top"
+                  value={margin.top}
+                  onChange={(e) => {
+                    setMargin({ ...margin, top: parseFloat(e.target.value) })
+                  }}
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="bottom"
+                >
+                  Bottom
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="bottom"
+                  value={margin.bottom}
+                  onChange={(e) => {
+                    setMargin({
+                      ...margin,
+                      bottom: parseFloat(e.target.value),
+                    })
+                  }}
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="left"
+                >
+                  Left
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="left"
+                  value={margin.left}
+                  onChange={(e) => {
+                    setMargin({ ...margin, left: parseFloat(e.target.value) })
+                  }}
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+              <fieldset className="flex items-center gap-5">
+                <label
+                  className="w-[55px] text-xs text-neutral-300"
+                  htmlFor="right"
+                >
+                  Right
+                </label>
+                <input
+                  type="number"
+                  step={1}
+                  id="right"
+                  value={margin.right}
+                  onChange={(e) => {
+                    setMargin({
+                      ...margin,
+                      right: parseFloat(e.target.value),
+                    })
+                  }}
+                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                />
+              </fieldset>
+            </div>
+          </Popover>
+        </div>
+        <div className="my-1" />
+        {type === "bar" && (
+          <div>
+            <p className="mb-2">Orientation</p>
+            <ToggleGroup
+              value={layout}
+              onValueChange={(value: string) => {
+                if (value) setLayout(value as "horizontal" | "vertical")
+              }}
+              items={[
+                {
+                  label: "Horizontal",
+                  value: "horizontal",
+                },
+                {
+                  label: "Vertical",
+                  value: "vertical",
+                },
+              ]}
+            />
+          </div>
+        )}
+        {type === "bar" && yAxis.length > 1 && (
+          <div>
+            <p className="mb-2">Group Mode</p>
+            <ToggleGroup
+              value={groupMode}
+              onValueChange={(value: string) => {
+                if (value) setGroupMode(value as "grouped" | "stacked")
+              }}
+              items={[
+                {
+                  label: "Grouped",
+                  value: "grouped",
+                },
+                {
+                  label: "Stacked",
+                  value: "stacked",
+                },
+              ]}
+            />
+          </div>
+        )}
+      </div>
+      <div className="relative grid h-screen w-full place-content-center">
+        <div className="flex justify-center">
+          <ToggleGroup
+            value={type}
+            onValueChange={(value: string) => {
+              if (value)
+                setType(value as "bar" | "pie" | "line" | "area" | "map")
+            }}
+            items={[
+              {
+                label: "Bar Chart",
+                value: "bar",
+              },
+              {
+                label: "Pie Chart",
+                value: "pie",
+              },
+              {
+                label: "Area Chart",
+                value: "area",
+              },
+              {
+                label: "Line Chart",
+                value: "line",
+              },
+              {
+                label: "Choropleth Map",
+                value: "map",
+              },
+            ]}
+          />
+        </div>
+        <div className="h-[600px] w-[800px]">
+          {renderGraph()}
           <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
         </div>
       </div>
