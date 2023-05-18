@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nivo/bar": "^0.83.0",
+    "@nivo/geo": "^0.83.0",
     "@nivo/line": "^0.83.0",
     "@nivo/pie": "^0.83.0",
     "@radix-ui/react-label": "^2.0.1",
