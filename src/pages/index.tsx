@@ -320,7 +320,7 @@ const HomePage: React.FC = () => {
           {renderGraph()}
           <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
         </div>
-        <div className="fixed top-0 w-full bg-amber-700 px-3 py-2.5 text-sm">
+        <div className="fixed top-0 w-full bg-purple-700 px-3 py-2.5 text-sm">
           The Product is still in development, You may face some issues, and
           some features may not work.
         </div>
