@@ -10,7 +10,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --dot-background-color: #171717;
+  --dot-color: #757478;
+
+  --dot-size: 21px;
+}
+
 html,
 body {
-  @apply bg-neutral-900 text-neutral-200;
+  @apply text-neutral-200;
+
+  background: linear-gradient(
+        90deg,
+        var(--dot-background-color) var(--dot-size),
+        transparent 1%
+      )
+      center,
+    linear-gradient(var(--dot-background-color) var(--dot-size), transparent 1%)
+      center,
+    var(--dot-color);
+  background-size: 22px 22px;
 }
