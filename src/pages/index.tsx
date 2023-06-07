@@ -60,6 +60,7 @@ const HomePage: React.FC = () => {
       case "area":
       case "line":
       case "pie":
+        return <div className="my-48 text-center">Soon ✨</div>
       case "bar":
       default:
         return (
@@ -316,10 +317,10 @@ const HomePage: React.FC = () => {
             ]}
           />
         </div>
-        <div className="h-[600px] w-[800px]">
+        <div className="mt-6 h-[600px] w-[800px] bg-neutral-900">
           {renderGraph()}
-          <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
         </div>
+        <DragInput title="Drop CSV file here" onChange={handleFileDrop} />
         <div className="fixed top-0 w-full bg-purple-700 px-3 py-2.5 text-sm">
           The Product is still in development, You may face some issues, and
           some features may not work.
