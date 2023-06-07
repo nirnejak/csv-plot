@@ -28,8 +28,8 @@ const Choropleth: React.FC<Props> = ({ data, defs, fill }) => (
     graticuleLineColor="#dddddd"
     borderWidth={0.5}
     borderColor="#152538"
-    defs={defs}
-    fill={fill}
+    // defs={defs}
+    // fill={fill}
     legends={[
       {
         anchor: "bottom-left",
