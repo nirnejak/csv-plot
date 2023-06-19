@@ -12,14 +12,14 @@ import Popover from "src/components/atoms/Popover"
 import GithubLink from "src/components/GithubLink"
 import Slider from "src/components/atoms/Slider"
 
+type DISPLAY_TYPES = "table" | "bar" | "pie" | "line" | "area" | "map"
+
 const HomePage: React.FC = () => {
   const [size, setSize] = React.useState(10)
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
   const [fields, setFields] = React.useState<string[]>([])
 
-  const [type, setType] = React.useState<
-    "bar" | "pie" | "line" | "area" | "map"
-  >("bar")
+  const [type, setType] = React.useState<DISPLAY_TYPES>("table")
   const [xAxis, setXAxis] = React.useState("")
   const [yAxis, setYAxis] = React.useState([""])
 
@@ -60,6 +60,7 @@ const HomePage: React.FC = () => {
       case "area":
       case "line":
       case "pie":
+      case "table":
         return <div className="my-48 text-center">Soon ✨</div>
       case "bar":
       default:
@@ -290,8 +291,7 @@ const HomePage: React.FC = () => {
           <ToggleGroup
             value={type}
             onValueChange={(value: string) => {
-              if (value)
-                setType(value as "bar" | "pie" | "line" | "area" | "map")
+              if (value) setType(value as DISPLAY_TYPES)
             }}
             items={[
               {
