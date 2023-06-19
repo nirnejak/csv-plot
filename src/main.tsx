@@ -5,11 +5,11 @@ import ReactDOM from "react-dom/client"
 
 import HomePage from "./pages"
 import BarChartPage from "./pages/bar"
-
-import "./main.css"
 import PieChartPage from "./pages/pie"
 import LineChartPage from "./pages/line"
 import ChoroplethPage from "./pages/geo"
+
+import "./main.css"
 
 const router = createBrowserRouter([
   {
