@@ -295,6 +295,10 @@ const HomePage: React.FC = () => {
             }}
             items={[
               {
+                label: "Table",
+                value: "table",
+              },
+              {
                 label: "Bar Chart",
                 value: "bar",
               },
