@@ -10,6 +10,7 @@ import LineChartPage from "./pages/line"
 import ChoroplethPage from "./pages/geo"
 
 import "./main.css"
+import NotFound from "./pages/404"
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/geo/",
     element: <ChoroplethPage />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ])
 
