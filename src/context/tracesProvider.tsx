@@ -12,9 +12,7 @@ export interface TraceContextType {
 
 export const TracesContext = React.createContext<TraceContextType>({
   traces: [],
-  setValues: (values) => {
-    console.log(values)
-  },
+  setValues: (values) => {},
 })
 
 const TracesProvider: React.FC<{ children: React.ReactNode }> = ({
