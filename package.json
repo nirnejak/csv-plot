@@ -7,7 +7,6 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src",
-    "prepare": "husky install",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md}\""
   },

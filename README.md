@@ -24,12 +24,6 @@ Quickly upload and plot CSV data in a graph
 npm install
 ```
 
-**Install Git Hooks(Required for Development)**
-
-```bash
-npm run prepare
-```
-
 **Start Development Server**
 
 ```bash
