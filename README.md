@@ -21,35 +21,35 @@ Quickly upload and plot CSV data in a graph
 **Install Dependencies**
 
 ```bash
-npm install
+bun install
 ```
 
 **Start Development Server**
 
 ```bash
-npm start
+bun start
 ```
 
 **Lint all the files**
 
 ```bash
-npm run lint
+bun run lint
 ```
 
 **Format all files with Prettier**
 
 ```bash
-npm run format
+bun run format
 ```
 
 **Check TypeScript issues**
 
 ```bash
-npm run type-check
+bun run type-check
 ```
 
 **Build for Production**
 
 ```bash
-npm run build
+bun run build
 ```
