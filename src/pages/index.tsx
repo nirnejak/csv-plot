@@ -11,10 +11,12 @@ import Select from "src/components/atoms/Select"
 import Popover from "src/components/atoms/Popover"
 import GithubLink from "src/components/GithubLink"
 import Slider from "src/components/atoms/Slider"
+import { type JSX } from "react/jsx-runtime"
 
 type DISPLAY_TYPES = "table" | "bar" | "pie" | "line" | "area" | "map"
 
 const HomePage: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [size, setSize] = React.useState(10)
   const [fileData, setFileData] = React.useState<Array<Record<string, any>>>([])
   const [fields, setFields] = React.useState<string[]>([])

@@ -28,7 +28,7 @@ const Slider: React.FC<Props> = ({
       <Track className="relative h-[3px] grow rounded-full bg-neutral-600">
         <Range className="absolute h-full rounded-full bg-neutral-300" />
       </Track>
-      <Thumb className="block h-5 w-5 rounded-[10px] bg-neutral-300 shadow-md hover:bg-neutral-400 focus:shadow-[0_0_0_5px] focus:shadow-neutral-100/40 focus:outline-none" />
+      <Thumb className="block size-5 rounded-[10px] bg-neutral-300 shadow-md hover:bg-neutral-400 focus:shadow-[0_0_0_5px] focus:shadow-neutral-100/40 focus:outline-none" />
     </Root>
   </form>
 )

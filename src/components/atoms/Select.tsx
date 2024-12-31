@@ -88,7 +88,7 @@ const Select: React.FC<Props> = ({
                       ))}
                     </Group>
                     {i !== options.length - 1 && (
-                      <Separator className="mx-1 my-2 h-[1px] bg-neutral-600" />
+                      <Separator className="mx-1 my-2 h-px bg-neutral-600" />
                     )}
                   </>
                 ))

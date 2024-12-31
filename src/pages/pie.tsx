@@ -1,6 +1,5 @@
 import React from "react"
 
-import classNames from "src/utils/classNames"
 import PieChart from "src/components/PieChart"
 
 const nivoData = [

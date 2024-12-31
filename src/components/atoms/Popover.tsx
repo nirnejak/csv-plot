@@ -20,7 +20,7 @@ const Popover: React.FC<Props> = ({ icon, children }) => (
   <Root>
     <Trigger asChild>
       <button
-        className="inline-flex h-9 w-9 cursor-default items-center justify-center rounded-full bg-neutral-800 p-3 text-neutral-300 outline-none hover:bg-neutral-600"
+        className="inline-flex size-9 cursor-default items-center justify-center rounded-full bg-neutral-800 p-3 text-neutral-300 outline-none hover:bg-neutral-600"
         aria-label="Update dimensions"
       >
         {icon}
