@@ -27,29 +27,47 @@ bun install
 **Start Development Server**
 
 ```bash
-bun start
-```
-
-**Lint all the files**
-
-```bash
-bun run lint
-```
-
-**Format all files with Prettier**
-
-```bash
-bun run format
-```
-
-**Check TypeScript issues**
-
-```bash
-bun run type-check
+bun run dev
 ```
 
 **Build for Production**
 
 ```bash
 bun run build
+```
+
+**Preview Production Build**
+
+```bash
+bun run preview
+```
+
+**Type Check**
+
+```bash
+bun run type-check
+```
+
+**Lint Code**
+
+```bash
+bun run lint
+```
+
+**Fix Lint Issues**
+
+```bash
+bun run lint:fix
+```
+
+**Format Code**
+
+```bash
+bun run format
+```
+
+**Check Code Formatting**
+
+```bash
+bun run format:check
 ```
