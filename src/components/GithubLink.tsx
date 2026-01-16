@@ -6,7 +6,10 @@ const GithubLink: React.FC = () => {
     <a
       href="https://github.com/nirnejak/csv-plot"
       target="_blank"
-      className="fixed right-3 top-3 flex items-center justify-center gap-2 text-sm text-neutral-300"
+      className="
+        fixed top-3 right-3 flex items-center justify-center gap-2 text-sm
+        text-neutral-300
+      "
       rel="noreferrer"
     >
       <span>View Source</span>

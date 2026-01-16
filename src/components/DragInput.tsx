@@ -44,7 +44,11 @@ const FileInput: React.FC<Props> = ({ title, onChange }) => {
       >
         <label
           htmlFor="file-input"
-          className="absolute bottom-0 right-0 flex w-full cursor-pointer items-center justify-center gap-2 bg-neutral-800 p-4 text-center text-neutral-400 hover:bg-neutral-900"
+          className="
+            absolute right-0 bottom-0 flex w-full cursor-pointer items-center
+            justify-center gap-2 bg-neutral-800 p-4 text-center text-neutral-400
+            hover:bg-neutral-900
+          "
         >
           <CloudUpload />
           <span>{title}</span>

@@ -82,7 +82,11 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="flex">
-      <div className="flex h-screen min-w-[300px] flex-col gap-5 bg-neutral-950 p-5 text-sm">
+      <div
+        className="
+          flex h-screen min-w-[300px] flex-col gap-5 bg-neutral-950 p-5 text-sm
+        "
+      >
         <div>
           <Select
             value={xAxis}
@@ -160,7 +164,11 @@ const HomePage: React.FC = () => {
           <p>Margin</p>
           <Popover icon={<SettingsHorizontal size={14} />}>
             <div className="flex flex-col gap-2.5">
-              <p className="mb-2.5 text-sm font-medium leading-[19px] text-neutral-300">
+              <p
+                className="
+                  mb-2.5 text-sm leading-[19px] font-medium text-neutral-300
+                "
+              >
                 Margin
               </p>
               <fieldset className="flex items-center gap-5">
@@ -178,7 +186,10 @@ const HomePage: React.FC = () => {
                   onChange={(e) => {
                     setMargin({ ...margin, top: parseFloat(e.target.value) })
                   }}
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  className="
+                    rounded-sm bg-neutral-900 px-1.5 py-1 text-xs leading-none
+                    text-neutral-300 outline-none
+                  "
                 />
               </fieldset>
               <fieldset className="flex items-center gap-5">
@@ -199,7 +210,10 @@ const HomePage: React.FC = () => {
                       bottom: parseFloat(e.target.value),
                     })
                   }}
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  className="
+                    rounded-sm bg-neutral-900 px-1.5 py-1 text-xs leading-none
+                    text-neutral-300 outline-none
+                  "
                 />
               </fieldset>
               <fieldset className="flex items-center gap-5">
@@ -217,7 +231,10 @@ const HomePage: React.FC = () => {
                   onChange={(e) => {
                     setMargin({ ...margin, left: parseFloat(e.target.value) })
                   }}
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  className="
+                    rounded-sm bg-neutral-900 px-1.5 py-1 text-xs leading-none
+                    text-neutral-300 outline-none
+                  "
                 />
               </fieldset>
               <fieldset className="flex items-center gap-5">
@@ -238,7 +255,10 @@ const HomePage: React.FC = () => {
                       right: parseFloat(e.target.value),
                     })
                   }}
-                  className="rounded bg-neutral-900 px-1.5 py-1 text-xs leading-none text-neutral-300 outline-none"
+                  className="
+                    rounded-sm bg-neutral-900 px-1.5 py-1 text-xs leading-none
+                    text-neutral-300 outline-none
+                  "
                 />
               </fieldset>
             </div>
