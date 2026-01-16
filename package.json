@@ -7,9 +7,12 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint ./src",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md}\""
+    "prepare": "husky"
   },
   "dependencies": {
     "@nivo/bar": "^0.99.0",
